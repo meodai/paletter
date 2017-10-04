@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 
-class Palette {
+export class Paletter {
   /**
    * Creates an instance of Palette.
    * @param {Object} paletteObj colors palettes 
