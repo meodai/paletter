@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('chroma-js')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'chroma-js'], factory) :
-	(factory((global.Paletter = {}),global.chroma));
-}(this, (function (exports,chroma) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('chroma-js')) :
+	typeof define === 'function' && define.amd ? define(['chroma-js'], factory) :
+	(global.Paletter = factory(global.chroma));
+}(this, (function (chroma) { 'use strict';
 
 chroma = chroma && chroma.hasOwnProperty('default') ? chroma['default'] : chroma;
 
@@ -12,7 +12,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Paletter = function () {
   /**
-   * Creates an instance of Palette.
+   * Creates an instance of Paletter.
    * @param {Object} paletteObj colors palettes 
    * @param {Object} colors Raw color values
    * @param {Object} [options={}] Default options 
@@ -41,7 +41,7 @@ var Paletter = function () {
      */
     value: function _validateColors() {
       var invalidColors = Object.entries(this.colors).filter(function (entry) {
-        return !Palette.isValidColor(entry[1]);
+        return !Paletter.isValidColor(entry[1]);
       });
 
       if (invalidColors.length) {
@@ -153,8 +153,6 @@ var Paletter = function () {
   return Paletter;
 }();
 
-exports.Paletter = Paletter;
-
-Object.defineProperty(exports, '__esModule', { value: true });
+return Paletter;
 
 })));
