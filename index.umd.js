@@ -1,10 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('chroma-js')) :
-	typeof define === 'function' && define.amd ? define(['chroma-js'], factory) :
-	(global.Paletter = factory(global.chroma));
-}(this, (function (chroma) { 'use strict';
-
-chroma = chroma && chroma.hasOwnProperty('default') ? chroma['default'] : chroma;
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(factory());
+}(this, (function () { 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -48,6 +46,11 @@ var Paletter = function () {
         console.log('following colors are invalid:', invalidColors);
       }
     }
+  }, {
+    key: '_getPaletteKey',
+    value: function _getPaletteKey(palette, key) {
+      return '' + palette + this.options.separator + key;
+    }
 
     /**
      * remaps all the color names to the actual color value
@@ -62,7 +65,7 @@ var Paletter = function () {
       for (var palette in palettes) {
         parsedPalette[palette] = {};
         for (var key in palettes[palette]) {
-          parsedPalette[palette][key] = this.getColor('' + palette + this.options.separator + key);
+          parsedPalette[palette][key] = this.getColor(this._getPaletteKey(palette, key));
         }
       }
       return parsedPalette;
@@ -95,7 +98,46 @@ var Paletter = function () {
     }
 
     /**
+     * Gets color value string and return if its a link to an other palette value
+     * @param {String} value 
+     * @return {Boolean}
+     */
+
+  }, {
+    key: '_isPaletteLink',
+    value: function _isPaletteLink(value) {
+      return value.indexOf(this.options.separator) !== -1;
+    }
+
+    /**
+     * returns a color value from this.palette
+     * and checks if the palette and color exists
      * 
+     * @param {String} palette name of the palette (property name of this.palette)
+     * @param {String} key name of the color within a palette 
+     *                     (property name of this.palette[paletteKey])
+     * @return {String} color value
+     */
+
+  }, {
+    key: '_getKeyReference',
+    value: function _getKeyReference(palette, key) {
+      var paletteRef = void 0;
+
+      if (this.palette.hasOwnProperty(palette)) {
+        paletteRef = this.palette[palette];
+      } else {
+        return console.log('no palette called "' + palette + '"');
+      }
+
+      if (paletteRef.hasOwnProperty(key)) {
+        return paletteRef[key];
+      } else {
+        return console.log('no color called "' + key + '" in "' + palette + '"');
+      }
+    }
+
+    /**
      * @param {String} paletteKey typically contains a palette--key string
      * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
      * @return {String} color string stored in color object
@@ -109,26 +151,46 @@ var Paletter = function () {
       if (callStack.indexOf(paletteKey) > -1) {
         return console.log('you have inifinite rucrstion in your palette');
       }
+
       var parsedKey = this._parseKey(paletteKey);
-      var palette = void 0,
-          color = void 0;
+      var colorKey = this._getKeyReference(parsedKey.palette, parsedKey.color);
 
-      if (this.palette.hasOwnProperty(parsedKey.palette)) {
-        palette = this.palette[parsedKey.palette];
+      if (this._isPaletteLink(colorKey)) {
+        return this.getColor(colorKey, callStack.concat([paletteKey]));
       } else {
-        return console.log('no palette called ' + parsedKey.palette);
+        return this.colors[colorKey];
       }
+    }
+  }, {
+    key: 'getConnections',
 
-      if (palette.hasOwnProperty(parsedKey.color)) {
-        color = palette[parsedKey.color];
-        if (color.indexOf(this.options.separator) !== -1) {
-          return this.getColor(color, callStack.concat([paletteKey]));
-        } else {
-          return this.colors[color];
+
+    /**
+     * Returns all connections of between palettes
+     * @returns {Array} List of all connections
+     */
+    value: function getConnections() {
+      var connections = [];
+      for (var paletteKey in this.palette) {
+        var palette = this.palette[paletteKey];
+        for (var colorName in palette) {
+          var colorValue = palette[colorName];
+          if (this._isPaletteLink(colorValue)) {
+            var parsedTargetKey = this._parseKey(colorValue);
+            connections.push({
+              from: {
+                key: this._getPaletteKey(paletteKey, colorName),
+                ref: this._parseKey(colorValue)
+              },
+              to: {
+                key: colorValue,
+                ref: this._getKeyReference(parsedTargetKey.palette, parsedTargetKey.color)
+              }
+            });
+          }
         }
-      } else {
-        return console.log('no color called ' + parsedKey.color + ' in ' + parsedKey.palette);
       }
+      return connections;
     }
   }], [{
     key: 'isValidColor',
@@ -152,7 +214,5 @@ var Paletter = function () {
 
   return Paletter;
 }();
-
-return Paletter;
 
 })));
