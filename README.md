@@ -1,4 +1,4 @@
-# paletter
+# paletter 🎨
 simple JS class to manage color palettes by giving them semantic meaning 
 and beeing aware of the connections between the colors in your palettes
 
