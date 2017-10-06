@@ -1,6 +1,4 @@
-import chroma from 'chroma-js';
-
-export default class Paletter {
+class Paletter {
   /**
    * Creates an instance of Paletter.
    * @param {Object} paletteObj colors palettes 
@@ -46,6 +44,10 @@ export default class Paletter {
     }
   }
   
+  _getPaletteKey (palette, key) {
+    return `${palette}${this.options.separator}${key}`
+  }
+  
   /**
    * remaps all the color names to the actual color value
    * @param {Object} palettes You palette object 
@@ -56,7 +58,7 @@ export default class Paletter {
     for(let palette in palettes) {
       parsedPalette[palette] = {};
       for(let key in palettes[palette]) {
-        parsedPalette[palette][key] = this.getColor(`${palette}${this.options.separator}${key}`);
+        parsedPalette[palette][key] = this.getColor(this._getPaletteKey(palette, key));
       } 
     }
     return parsedPalette;
@@ -81,9 +83,42 @@ export default class Paletter {
       color: parts[0].length > 1 && parts[1] ? parts[1] : this.options.defaultColorKey,
     }
   }
+  
+  /**
+   * Gets color value string and return if its a link to an other palette value
+   * @param {String} value 
+   * @return {Boolean}
+   */
+  _isPaletteLink (value) {
+    return value.indexOf(this.options.separator) !== -1;
+  }
+  
+  /**
+   * returns a color value from this.palette
+   * and checks if the palette and color exists
+   * 
+   * @param {String} palette name of the palette (property name of this.palette)
+   * @param {String} key name of the color within a palette 
+   *                     (property name of this.palette[paletteKey])
+   * @return {String} color value
+   */
+  _getKeyReference (palette, key) {
+    let paletteRef;
+    
+    if (this.palette.hasOwnProperty(palette)) {
+      paletteRef = this.palette[palette];
+    } else {
+      return console.log(`no palette called "${palette}"`);
+    }
+    
+    if (paletteRef.hasOwnProperty(key)) { 
+      return paletteRef[key];
+    } else {
+      return console.log(`no color called "${key}" in "${palette}"`);
+    }
+  } 
 
   /**
-   * 
    * @param {String} paletteKey typically contains a palette--key string
    * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
    * @return {String} color string stored in color object
@@ -92,24 +127,43 @@ export default class Paletter {
     if(callStack.indexOf(paletteKey) > -1) {
       return console.log('you have inifinite rucrstion in your palette');
     }
+    
     const parsedKey = this._parseKey(paletteKey);
-    let palette, color;
+    const colorKey = this._getKeyReference(parsedKey.palette, parsedKey.color);
     
-    if (this.palette.hasOwnProperty(parsedKey.palette)) {
-      palette = this.palette[parsedKey.palette];
+    if (this._isPaletteLink(colorKey)) {
+      return this.getColor(colorKey, callStack.concat([paletteKey]));
     } else {
-      return console.log(`no palette called ${parsedKey.palette}`);
+      return this.colors[colorKey];
     }
-    
-    if (palette.hasOwnProperty(parsedKey.color)) {
-      color = palette[parsedKey.color]
-      if (color.indexOf(this.options.separator) !== -1) {
-        return this.getColor(color, callStack.concat([paletteKey]));
-      } else {
-        return this.colors[color];
+  };
+  
+  /**
+   * Returns all connections of between palettes
+   * @returns {Array} List of all connections
+   */
+  getConnections () {
+    let connections = [];
+    for (let paletteKey in this.palette) {
+      let palette = this.palette[paletteKey];
+      for (let colorName in palette) {
+        let colorValue = palette[colorName];
+        if (this._isPaletteLink(colorValue)) {
+          let parsedTargetKey = this._parseKey(colorValue);
+          connections.push({
+            from: {
+              key: this._getPaletteKey(paletteKey, colorName),
+              ref: this._parseKey(colorValue)
+            },
+            to: {
+              key: colorValue,
+              ref: this._getKeyReference( parsedTargetKey.palette, parsedTargetKey.color )
+            }
+          })
+        }
       }
-    } else {
-      return console.log(`no color called ${parsedKey.color} in ${parsedKey.palette}`);
     }
-  }
+    return connections;
+  };
+  
 }
