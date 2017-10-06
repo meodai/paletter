@@ -11,7 +11,7 @@ const colors = {
   blue: '#00fff1',
   red: '#ff2211',
   black: '#010101',
-  yellow: '#f4f142'
+  yellow: '#f4f142',
   darkGrey: '#212121',
   lime: '#42ff3f',
 };
@@ -40,7 +40,7 @@ const palettes = {
     default: 'brand--hightlight',
     link: 'brand--logo',
     button: 'brand--hightlight'
-  }
+  },
   layout: {
     lines: 'darkGrey'
   }
@@ -64,12 +64,14 @@ palette.getConnections() // returns an array of all links within palettes
 ## Examples:
 Create CSS variables for each color:
 ```javascript
-function objToCSSVars (obj) {
-  let CSSvars = ':root {';
+function objToCSSVars (obj, links) {
+  let CSSvars = ':root {\n';
   for (let palette in obj) {
     let prefix = `--${palette}`;
     for (let key in obj[palette] ) {
-      CSSvars += `${prefix}-${key}: ${obj[palette][key]};\n`;  
+      let color = obj[palette][key];
+      const linkFromKey = links.find(c => (c.from.key == `${palette}--${key}`));
+      CSSvars += `  ${prefix}-${key}: ${linkFromKey ? `var(--${linkFromKey.to.key.replace('--','-')},${color})` : color};\n`;  
     }
   }
   CSSvars += '}';
@@ -77,8 +79,29 @@ function objToCSSVars (obj) {
   return CSSvars;
 };
 
-const cssVars = objToCSSVars(palette.getParsed());
+const connections = palette.getConnections();
+const cssVars = objToCSSVars(palette.getParsed(), connections);
 const $style = document.createElement('style');
 $style.innerHTML = cssVars;
 document.querySelector('head').appendChild($style);
+```
+
+### Will result in something like
+```css
+:root {
+  --brand-logo: #00fff1;
+  --brand-main: #010101;
+  --brand-hightlight: #42ff3f;
+  --typography-default: var(--brand-main,#010101);
+  --typography-heading: var(--brand-logo,#00fff1);
+  --typography-title: var(--brand-main,#010101);
+  --typography-subtitle: #212121;
+  --irregularity-error: #ff2211;
+  --irregularity-warning: #f4f142;
+  --irregularity-notification: var(--brand-hightlight,#42ff3f);
+  --interaction-default: var(--brand-hightlight,#42ff3f);
+  --interaction-link: var(--brand-logo,#00fff1);
+  --interaction-button: var(--brand-hightlight,#42ff3f);
+  --layout-lines: #212121;
+}
 ```
