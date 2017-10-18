@@ -1,12 +1,15 @@
 {
   "name": "paletter",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "simple JS class to manage color palettes",
   "main": "index.umd.js",
   "es2015": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup --config"
+  },
+  "bin": {
+    "paletterTo": "./generate.js"
   },
   "repository": {
     "type": "git",

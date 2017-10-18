@@ -1,0 +1,26 @@
+{
+  "brand": {
+    "logo": "blue",
+    "main": "black",
+    "hightlight": "lime"
+  },
+  "typography": {
+    "default": "brand--main",
+    "heading": "brand--logo",
+    "title": "brand--main",
+    "subtitle": "darkGrey"
+  },
+  "irregularity": {
+    "error": "red",
+    "warning": "yellow",
+    "notification": "brand--hightlight"
+  },
+  "interaction": {
+    "default": "brand--hightlight",
+    "link": "brand--logo",
+    "button": "brand--hightlight"
+  },
+  "layout": {
+    "lines": "darkGrey"
+  }
+}

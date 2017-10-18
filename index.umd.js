@@ -1,8 +1,10 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(factory());
-}(this, (function () { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('chroma-js')) :
+	typeof define === 'function' && define.amd ? define(['chroma-js'], factory) :
+	(global.Paletter = factory(global.chroma));
+}(this, (function (chroma) { 'use strict';
+
+chroma = chroma && chroma.hasOwnProperty('default') ? chroma['default'] : chroma;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -12,7 +14,7 @@ var Paletter = function () {
   /**
    * Creates an instance of Paletter.
    * @param {Object} paletteObj colors palettes 
-   * @param {Object} colors Raw color values
+   * @param {Object} colors Raw color values {name: value}
    * @param {Object} [options={}] Default options 
    */
 
@@ -212,7 +214,7 @@ var Paletter = function () {
       try {
         chroma(value);
       } catch (error) {
-        return false;
+        throw false;
       }
       return true;
     }
@@ -220,5 +222,7 @@ var Paletter = function () {
 
   return Paletter;
 }();
+
+return Paletter;
 
 })));

@@ -1,8 +1,9 @@
-class Paletter {
+import chroma from 'chroma-js';
+export default class Paletter {
   /**
    * Creates an instance of Paletter.
    * @param {Object} paletteObj colors palettes 
-   * @param {Object} colors Raw color values
+   * @param {Object} colors Raw color values {name: value}
    * @param {Object} [options={}] Default options 
    */
   
@@ -29,7 +30,7 @@ class Paletter {
     try { 
       chroma(value);
     } catch (error) {
-      return false;
+      throw false;
     } 
     return true;
   };
@@ -38,7 +39,7 @@ class Paletter {
    * Makes sure all colors passed to the Palette are valid
    */
   _validateColors () {
-    const invalidColors = Object.entries(this.colors).filter(entry => 
+    const invalidColors = Object.entries(this.colors).filter(entry =>
       (!Paletter.isValidColor(entry[1]))
     );
     
