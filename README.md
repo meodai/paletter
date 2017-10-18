@@ -105,3 +105,14 @@ document.querySelector('head').appendChild($style);
   --layout-lines: #212121;
 }
 ```
+
+## CLI
+
+### usage
+```bash
+node ./node_modules/.bin/paletterTo --colors ./colors.json --palette ./palettes.json --mode css >> colors.css
+```
+### arguments
+- `colors`: path to JSON containing raw colors as {name: key}
+- `palettes`: path to JSON containing palettes as {key: referene}
+- `mode`: css, scss or html
