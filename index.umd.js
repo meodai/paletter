@@ -15,6 +15,8 @@ var Paletter = function () {
    * @param {Object} colors Raw color values
    * @param {Object} [options={}] Default options 
    */
+
+  // palettename--name
   function Paletter(paletteObj, colors) {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
@@ -22,6 +24,7 @@ var Paletter = function () {
 
     this.defaults = {
       separator: '--',
+      modifier: '',
       defaultColorKey: 'default'
     };
     this.options = Object.assign({}, options, this.defaults);
@@ -65,7 +68,7 @@ var Paletter = function () {
       for (var palette in palettes) {
         parsedPalette[palette] = {};
         for (var key in palettes[palette]) {
-          parsedPalette[palette][key] = this.getColor(this._getPaletteKey(palette, key));
+          parsedPalette[palette][key] = this.getColor(this._getPaletteKey(palette, key)).value;
         }
       }
       return parsedPalette;
@@ -140,7 +143,7 @@ var Paletter = function () {
     /**
      * @param {String} paletteKey typically contains a palette--key string
      * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
-     * @return {String} color string stored in color object
+     * @return {Object} val: color string stored in color object, name: name in color palette
      */
 
   }, {
@@ -158,7 +161,10 @@ var Paletter = function () {
       if (this._isPaletteLink(colorKey)) {
         return this.getColor(colorKey, callStack.concat([paletteKey]));
       } else {
-        return this.colors[colorKey];
+        return {
+          value: this.colors[colorKey],
+          name: colorKey
+        };
       }
     }
   }, {

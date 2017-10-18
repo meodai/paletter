@@ -52,8 +52,8 @@ const palettes = {
 ```javascript
 const palette = new Paletter(palettes, colors);
 
-palette('typography'); // => returns the default color (#010101)
-palette('irregularity--notification'); // => #42ff3f
+palette.get('typography'); // => returns the default color (#010101)
+palette.get('irregularity--notification'); // => {value: #42ff3f, name: lime}
 
 palette.getParsed() // will return your full palette with hex values instead of links to other items
 

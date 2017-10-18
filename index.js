@@ -5,9 +5,12 @@ class Paletter {
    * @param {Object} colors Raw color values
    * @param {Object} [options={}] Default options 
    */
+  
+  // palettename--name
   constructor (paletteObj, colors, options = {}) {
     this.defaults = {
       separator: '--',
+      modifier: '',
       defaultColorKey: 'default',
     };
     this.options = Object.assign({}, options, this.defaults)
@@ -58,7 +61,7 @@ class Paletter {
     for(let palette in palettes) {
       parsedPalette[palette] = {};
       for(let key in palettes[palette]) {
-        parsedPalette[palette][key] = this.getColor(this._getPaletteKey(palette, key));
+        parsedPalette[palette][key] = this.getColor(this._getPaletteKey(palette, key)).value;
       } 
     }
     return parsedPalette;
@@ -121,7 +124,7 @@ class Paletter {
   /**
    * @param {String} paletteKey typically contains a palette--key string
    * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
-   * @return {String} color string stored in color object
+   * @return {Object} val: color string stored in color object, name: name in color palette
    */
   getColor (paletteKey, callStack = []) {
     if(callStack.indexOf(paletteKey) > -1) {
@@ -134,7 +137,10 @@ class Paletter {
     if (this._isPaletteLink(colorKey)) {
       return this.getColor(colorKey, callStack.concat([paletteKey]));
     } else {
-      return this.colors[colorKey];
+      return {
+        value: this.colors[colorKey],
+        name: colorKey
+      };
     }
   };
   
@@ -164,6 +170,5 @@ class Paletter {
       }
     }
     return connections;
-  };
-  
+  }; 
 }
