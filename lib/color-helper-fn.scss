@@ -1,0 +1,50 @@
+@function str-split($string, $separator) {
+  // empty array/list
+  $split-arr: ();
+  // first index of separator in string
+  $index : str-index($string, $separator);
+
+  $separatorLength: str-length($separator);
+  // loop through string
+  @while $index != null {
+      // get the substring from the first character to the separator
+      $item: str-slice($string, 1, $index - 1);
+      // push item to array
+      $split-arr: append($split-arr, $item);
+      // remove item and separator from string
+      $string: str-slice($string, $index + $separatorLength);
+      // find new index of separator
+      $index : str-index($string, $separator);
+  }
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}
+
+/// colors function
+@function c($name, $colors: $colors) {
+  $separatorStr: '--';
+
+  @if not str-index($name, $separatorStr) {
+    @error 'colors must me called using paletteName#{$separatorStr}colorName, you used #{$name}';
+  }
+
+  $parts: str-split($name, $separatorStr);
+  $paletteName: nth($parts, 1);
+  $colorName: nth($parts, 2);
+
+  $paletteMap: ();
+
+  @if not map-has-key($colors, $paletteName) {
+    @error 'there is no palette named #{$paletteName} in $colors';
+  } @else {
+    $paletteMap: map-get($colors, $paletteName);
+  }
+
+  @if not map-has-key($paletteMap, $colorName) {
+    @error 'there is no color named #{$colorName} in the #{$paletteName} palette';
+  } @else {
+    @return unquote(map-get($paletteMap, $colorName));
+  }
+}
