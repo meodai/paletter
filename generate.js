@@ -10,14 +10,14 @@ const modes = {
                            .replace(/}/g, ')')
                            .replace(/"/g, '');
 
-    return `$colors: ${paletteStr};`;
+    return `$paletter-colors: ${paletteStr};`;
   },
   html: require('./lib/toHTML.js'),
 };
 
 const helptext = `
 usage:
-  paletterTo --colors ./colors.json --palette ./palettes.json --mode css >> colors.css
+  paletterTo --colors ./colors.json --palettes ./palettes.json --mode css >> colors.css
 arguments
   colors: path to JSON containing raw colors as {name: key}
   palettes: path to JSON containing palettes as {key: referene}

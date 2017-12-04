@@ -110,7 +110,7 @@ document.querySelector('head').appendChild($style);
 
 ### usage
 ```bash
-node ./node_modules/.bin/paletterTo --colors ./colors.json --palette ./palettes.json --mode css > colors.css
+node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes.json --mode css > colors.css
 ```
 ### arguments
 - `colors`: path to JSON containing raw colors as {name: key}
