@@ -17,7 +17,7 @@ const modes = {
 
 const helptext = `
 usage:
-  paletterTo --colors ./colors.json --palette ./palettes.json --mode css >> colors.css
+  paletterTo --colors ./colors.json --palettes ./palettes.json --mode css >> colors.css
 arguments
   colors: path to JSON containing raw colors as {name: key}
   palettes: path to JSON containing palettes as {key: referene}
