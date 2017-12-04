@@ -5,7 +5,12 @@ const Paletter = require('.');
 const modes = {
   css: require('./lib/toCSS.js'),
   scss: (palette) => {
-    const paletteStr = JSON.stringify(palette, null, 2).replace(/{/g, '(').replace(/}/g, ')');
+    const paletteStr = JSON.stringify(palette, null, 2)
+                           .replace(/{/g, '(')
+                           .replace(/}/g, ')')
+                           .replace(/"/g, '');
+
+    console.log(paletteStr);
     return `$colors: ${paletteStr};`;
   },
   html: require('./lib/toHTML.js'),
@@ -25,7 +30,7 @@ const args = {
   palettes: ['--palettes', '-p'],
   mode: ['--mode', '-m'],
   help: ['--help', '-h'],
-}; 
+};
 
 const defaults = {
   mode: 'css',
@@ -42,7 +47,7 @@ let colorsContent;
 args.colors.forEach(colorsArg => {
   const index = process.argv.indexOf(colorsArg);
   if ( index > -1 ) {
-    colorsContent = JSON.parse(fs.readFileSync(process.argv[index + 1], 'utf8')); 
+    colorsContent = JSON.parse(fs.readFileSync(process.argv[index + 1], 'utf8'));
   }
 });
 
@@ -55,7 +60,7 @@ let palettesContent;
 args.palettes.forEach(palettesArg => {
   const index = process.argv.indexOf(palettesArg);
   if ( index > -1 ) {
-    palettesContent = JSON.parse(fs.readFileSync(process.argv[index + 1], 'utf8')); 
+    palettesContent = JSON.parse(fs.readFileSync(process.argv[index + 1], 'utf8'));
   }
 });
 
@@ -67,7 +72,7 @@ let mode = defaults.mode;
 args.mode.forEach(modeArg => {
   const index = process.argv.indexOf(modeArg);
   if ( index > -1 ) {
-    mode = process.argv[index + 1].toLocaleLowerCase(); 
+    mode = process.argv[index + 1].toLocaleLowerCase();
   }
 });
 
@@ -75,9 +80,9 @@ const palette = new Paletter(palettesContent, colorsContent);
 
 const connections = palette.getConnections();
 const output = modes[mode](
-  palette.getParsed(), 
-  connections, 
-  palette, 
+  palette.getParsed(),
+  connections,
+  palette,
   palettesContent
 );
 

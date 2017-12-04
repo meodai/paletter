@@ -1,3 +1,5 @@
+/* paletter color functions */
+
 @function str-split($string, $separator) {
   // empty array/list
   $split-arr: ();
@@ -45,6 +47,6 @@
   @if not map-has-key($paletteMap, $colorName) {
     @error 'there is no color named #{$colorName} in the #{$paletteName} palette';
   } @else {
-    @return unquote(map-get($paletteMap, $colorName));
+    @return map-get($paletteMap, $colorName);
   }
 }
