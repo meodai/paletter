@@ -25,7 +25,7 @@
 }
 
 /// colors function
-@function c($name, $colors: $colors) {
+@function c($name, $colors: $paletter-colors) {
   $separatorStr: '--';
 
   @if not str-index($name, $separatorStr) {
