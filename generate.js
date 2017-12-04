@@ -10,7 +10,6 @@ const modes = {
                            .replace(/}/g, ')')
                            .replace(/"/g, '');
 
-    console.log(paletteStr);
     return `$colors: ${paletteStr};`;
   },
   html: require('./lib/toHTML.js'),
