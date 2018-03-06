@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs');
+const path = require('path');
 
 const Paletter = require('.');
 const modes = {
@@ -16,12 +17,12 @@ const modes = {
 };
 
 const helptext = `
-usage:
-  paletterTo --colors ./colors.json --palettes ./palettes.json --mode css >> colors.css
-arguments
-  colors: path to JSON containing raw colors as {name: key}
-  palettes: path to JSON containing palettes as {key: referene}
-  mode: css, scss or html
+  usage:
+    paletterTo --colors ./colors.json --palettes ./palettes.json --mode css >> colors.css
+  arguments
+    colors: path to JSON containing raw colors as {name: key}
+    palettes: path to JSON containing palettes as {key: referene}
+    mode: css, scss or html
 `;
 
 const args = {
@@ -33,9 +34,14 @@ const args = {
 
 const defaults = {
   mode: 'css',
-}
+};
 
-args.help.forEach(helpArg => {
+const isJsFile = (pathName) => {
+  const fileName = path.basename(pathName);
+  return path.extname(fileName) === '.js';
+};
+
+args.help.forEach((helpArg) => {
   if ( process.argv.includes(helpArg) ) {
     console.log(helptext);
     process.exit(1);
@@ -43,10 +49,13 @@ args.help.forEach(helpArg => {
 });
 
 let colorsContent;
-args.colors.forEach(colorsArg => {
+args.colors.forEach((colorsArg) => {
   const index = process.argv.indexOf(colorsArg);
   if ( index > -1 ) {
-    colorsContent = JSON.parse(fs.readFileSync(process.argv[index + 1], 'utf8'));
+    const path = process.argv[index + 1];
+    const file = fs.readFileSync(path);
+
+    colorsContent = isJsFile(path) ? require(path) : JSON.parse(file, 'utf8');
   }
 });
 
@@ -56,10 +65,12 @@ if (!colorsContent) {
 
 
 let palettesContent;
-args.palettes.forEach(palettesArg => {
+args.palettes.forEach((palettesArg) => {
   const index = process.argv.indexOf(palettesArg);
   if ( index > -1 ) {
-    palettesContent = JSON.parse(fs.readFileSync(process.argv[index + 1], 'utf8'));
+    const path = process.argv[index + 1];
+    const file = fs.readFileSync(path);
+    palettesContent = isJsFile(path) ? require(path) : JSON.parse(file, 'utf8');
   }
 });
 
@@ -68,7 +79,7 @@ if (!palettesContent) {
 }
 
 let mode = defaults.mode;
-args.mode.forEach(modeArg => {
+args.mode.forEach((modeArg) => {
   const index = process.argv.indexOf(modeArg);
   if ( index > -1 ) {
     mode = process.argv[index + 1].toLocaleLowerCase();

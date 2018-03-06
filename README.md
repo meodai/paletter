@@ -1,5 +1,5 @@
 # paletter 🎨
-simple JS class to manage color palettes by giving them semantic meaning 
+simple JS class to manage color palettes by giving them semantic meaning
 and beeing aware of the connections between the colors in your palettes
 
 
@@ -71,11 +71,11 @@ function objToCSSVars (obj, links) {
     for (let key in obj[palette] ) {
       let color = obj[palette][key];
       const linkFromKey = links.find(c => (c.from.key == `${palette}--${key}`));
-      CSSvars += `  ${prefix}-${key}: ${linkFromKey ? `var(--${linkFromKey.to.key.replace('--','-')},${color})` : color};\n`;  
+      CSSvars += `  ${prefix}-${key}: ${linkFromKey ? `var(--${linkFromKey.to.key.replace('--','-')},${color})` : color};\n`;
     }
   }
   CSSvars += '}';
-  
+
   return CSSvars;
 };
 
@@ -113,6 +113,16 @@ document.querySelector('head').appendChild($style);
 node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes.json --mode css > colors.css
 ```
 ### arguments
-- `colors`: path to JSON containing raw colors as {name: key}
-- `palettes`: path to JSON containing palettes as {key: referene}
+- `colors`: path to JSON or JS containing raw colors as {name: key}
+- `palettes`: path to JSON or JS containing palettes as {key: referene}
 - `mode`: css, scss or html
+
+### usage with javascript files as arguments
+You can use javascript files instead of JSON files, as long as you export a javascript object like this:
+
+```
+// colors.js
+module.exports = {
+  blue: '#00fff1'
+}
+```
