@@ -11,14 +11,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Paletter = function () {
-  /**
-   * Creates an instance of Paletter.
-   * @param {Object} paletteObj colors palettes 
-   * @param {Object} colors Raw color values {name: value}
-   * @param {Object} [options={}] Default options 
-   */
 
   // palettename--name
+  /**
+   * Creates an instance of Paletter.
+   * @param {Object} paletteObj colors palettes
+   * @param {Object} colors Raw color values {name: value}
+   * @param {Object} [options={}] Default options
+   */
   function Paletter(paletteObj, colors) {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
@@ -29,11 +29,19 @@ var Paletter = function () {
       modifier: '',
       defaultColorKey: 'default'
     };
-    this.options = Object.assign({}, options, this.defaults);
+    this.options = Object.assign({}, this.defaults, options);
     this.colors = Object.assign({}, colors);
     this.palette = Object.assign({}, paletteObj);
     this._validateColors();
   }
+
+  /**
+   * makes sure a a color is valid by creating a chroma instance of that color
+   * @static
+   * @param {string|number} value color value as rgb, hex, hsl... string
+   * @return {Boolean}
+   */
+
 
   _createClass(Paletter, [{
     key: '_validateColors',
@@ -59,7 +67,7 @@ var Paletter = function () {
 
     /**
      * remaps all the color names to the actual color value
-     * @param {Object} palettes You palette object 
+     * @param {Object} palettes You palette object
      * @return {Object} parsed palette with color values instead of links
      */
 
@@ -76,7 +84,7 @@ var Paletter = function () {
       return parsedPalette;
     }
 
-    /** 
+    /**
      * @return {Object} palette parsed by _parsePalette
      */
 
@@ -88,7 +96,7 @@ var Paletter = function () {
 
     /**
      * parses key passed to the getColor method
-     * @param {String} paletteKey  
+     * @param {String} paletteKey
      * @return {Object} containing a property with the palette palette and color key
      */
 
@@ -104,7 +112,7 @@ var Paletter = function () {
 
     /**
      * Gets color value string and return if its a link to an other palette value
-     * @param {String} value 
+     * @param {String} value
      * @return {Boolean}
      */
 
@@ -117,9 +125,9 @@ var Paletter = function () {
     /**
      * returns a color value from this.palette
      * and checks if the palette and color exists
-     * 
+     *
      * @param {String} palette name of the palette (property name of this.palette)
-     * @param {String} key name of the color within a palette 
+     * @param {String} key name of the color within a palette
      *                     (property name of this.palette[paletteKey])
      * @return {String} color value
      */
@@ -132,13 +140,13 @@ var Paletter = function () {
       if (this.palette.hasOwnProperty(palette)) {
         paletteRef = this.palette[palette];
       } else {
-        return console.log('no palette called "' + palette + '"');
+        throw new Error('no palette called "' + palette + '"');
       }
 
       if (paletteRef.hasOwnProperty(key)) {
         return paletteRef[key];
       } else {
-        return console.log('no color called "' + key + '" in "' + palette + '"');
+        throw new Error('no color called "' + key + '" in "' + palette + '"');
       }
     }
 
@@ -154,7 +162,7 @@ var Paletter = function () {
       var callStack = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
       if (callStack.indexOf(paletteKey) > -1) {
-        return console.log('you have inifinite rucrstion in your palette');
+        throw new Error('you have infinite recursion in your palette');
       }
 
       var parsedKey = this._parseKey(paletteKey);
@@ -169,14 +177,14 @@ var Paletter = function () {
         };
       }
     }
-  }, {
-    key: 'getConnections',
-
 
     /**
      * Returns all connections of between palettes
-     * @returns {Array} List of all connections
+     * @return {Array} List of all connections
      */
+
+  }, {
+    key: 'getConnections',
     value: function getConnections() {
       var connections = [];
       for (var paletteKey in this.palette) {
@@ -202,19 +210,11 @@ var Paletter = function () {
     }
   }], [{
     key: 'isValidColor',
-
-
-    /**
-     * makes sure a a color is valid by creating a chroma instance of that color
-     * @static
-     * @param {String} value color value as rgb, hex, hsl... string 
-     * @return {Boolean} 
-     */
     value: function isValidColor(value) {
       try {
         chroma(value);
       } catch (error) {
-        throw false;
+        return false;
       }
       return true;
     }
