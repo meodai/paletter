@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const toCss = require('./lib/toCSS.js');
 
 const Paletter = require('.');
 const modes = {
-  css: require('./lib/toCSS.js'),
+  css: (parsedPalette, connections) => {
+    return toCss(
+      parsedPalette,
+      connections
+    );
+  },
   scss: (palette) => {
     const paletteStr = JSON.stringify(palette, null, 2)
                            .replace(/{/g, '(')
