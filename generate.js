@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const toCss = require('./lib/toCSS.js');
+const toSCSSvars = require('./lib/toSCSSvars.js');
 
 const Paletter = require('.');
 const modes = {
@@ -18,6 +19,12 @@ const modes = {
                            .replace(/"/g, '');
 
     return `$paletter-colors: ${paletteStr};`;
+  },
+  scssvars: (parsedPalette, connections) => {
+    return toSCSSvars(
+      parsedPalette,
+      connections
+    )
   },
   html: require('./lib/toHTML.js'),
 };
