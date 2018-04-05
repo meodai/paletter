@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const toCss = require('./lib/toCSS.js');
 
 const Paletter = require('.');
 const modes = {
-  css: require('./lib/toCSS.js'),
+  css: (parsedPalette, connections) => {
+    return toCss(
+      parsedPalette,
+      connections
+    );
+  },
   scss: (palette) => {
     const paletteStr = JSON.stringify(palette, null, 2)
                            .replace(/{/g, '(')
@@ -52,10 +58,11 @@ let colorsContent;
 args.colors.forEach((colorsArg) => {
   const index = process.argv.indexOf(colorsArg);
   if ( index > -1 ) {
-    const path = process.argv[index + 1];
-    const file = fs.readFileSync(path);
+    const filePath = process.argv[index + 1];
+    const file = fs.readFileSync(filePath);
 
-    colorsContent = isJsFile(path) ? require(path) : JSON.parse(file, 'utf8');
+    colorsContent = isJsFile(filePath) ?
+      require(path.join(process.cwd(), filePath)) : JSON.parse(file, 'utf8');
   }
 });
 
@@ -68,9 +75,11 @@ let palettesContent;
 args.palettes.forEach((palettesArg) => {
   const index = process.argv.indexOf(palettesArg);
   if ( index > -1 ) {
-    const path = process.argv[index + 1];
-    const file = fs.readFileSync(path);
-    palettesContent = isJsFile(path) ? require(path) : JSON.parse(file, 'utf8');
+    const filePath = process.argv[index + 1];
+    const file = fs.readFileSync(filePath);
+
+    palettesContent = isJsFile(filePath)
+      ? require(path.join(process.cwd(), filePath)) : JSON.parse(file, 'utf8');
   }
 });
 
