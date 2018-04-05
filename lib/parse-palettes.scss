@@ -1,0 +1,132 @@
+// This does the same than index.js but in SASS using SASS-Maps
+// you need to have a variable called $colors containing a map of colrors
+// like: $colors: (red; #f00, green: #0f0);
+// and a map containing your palettes: $palettes: (brand: (primary: red));
+
+$separator: '--';
+$modifier: '';
+$defaultColorKey: 'default';
+$parsedPalette: ();
+
+@function contains($list, $var) {
+  @return (false == index($list, $var));
+}
+
+@function _getPaletteKey($palette, $key) {
+    @return #{$palette}#{$separator}#{$key};
+}
+
+/**
+ * Gets color value string and return if its a link to an other palette value
+ * @param {String} value
+ * @return {Boolean}
+ */
+@function _isPaletteLink($value) {
+  @return str-index(#{$value}, unquote($separator)) != null;
+}
+
+/**
+ * parses key passed to the getColor method
+ * @param {String} paletteKey
+ * @return {Object} containing a property with the palette palette and color key
+ */
+@function _parseKey($paletteKey) {
+  $separatorIndex: str-index($paletteKey, $separator);
+  $palette: str-slice(
+    $paletteKey,
+    0,
+    $separatorIndex - 1
+  );
+
+  $val: str-slice(
+    $paletteKey,
+    $separatorIndex + str-length($separator)
+  );
+
+  @return (
+    palette: $palette,
+    color: $val,
+  );
+}
+
+/**
+ * returns a color value from palette
+ * and checks if the palette and color exists
+ *
+ * @param {String} palette name of the palette (property name of this.palette)
+ * @param {String} key name of the color within a palette
+ *                     (property name of this.palette[paletteKey])
+ * @return {String} color value
+ */
+@function _getKeyReference($palette, $key) {
+  $paletteRef: ();
+  @if (map-has-key($palettes, $palette)) {
+    $paletteRef: map-get($palettes, $palette);
+  } @else {
+    @error 'no palette called #{$palette} in #{$palettes}';
+  }
+
+  @if (map-has-key($paletteRef, $key)) {
+    @return map-get($paletteRef, $key);
+  } @else {
+    @error 'no color called #{$key} in #{$palette}';
+  }
+}
+
+/**
+ * @param {String} paletteKey typically contains a palette--key string
+ * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
+ * @return {Object} val: color string stored in color object, name: name in color palette
+ */
+@function _getColor($paletteKey, $callStack: ()) {
+  @if (contains($callStack, $paletteKey)) {
+    @error 'you have infinite recursion in your palette';
+  }
+
+  $parsedKey: _parseKey($paletteKey);
+
+  $colorKey: _getKeyReference(
+    map-get($parsedKey, 'palette'),
+    map-get($parsedKey, 'color')
+  );
+
+  @if (_isPaletteLink($colorKey)) {
+    $stack: append($callStack, $paletteKey);
+    @return _getColor($colorKey, $stack);
+  } @else {
+    @return (
+      value: map-get($colors, $colorKey),
+      name: $colorKey,
+    );
+  }
+}
+
+/**
+ * remaps all the color names to the actual color value
+ * @param {Object} palettes You palette object
+ * @return {Object} parsed palette with color values instead of links
+ */
+
+@function _parsePalette($palettes) {
+  $parsedPalette: ();
+
+  @each $paletteKey, $palette in $palettes {
+    $values: ();
+
+    @each $key, $val in map-get($palettes, $paletteKey) {
+      $palKey: _getPaletteKey($paletteKey, $key);
+      $colorMap: _getColor($palKey);
+      $values: map-merge(
+        $values,
+        (#{$key}: map-get($colorMap, 'value'))
+      );
+    }
+
+    $parsedPalette: map-merge(
+      $parsedPalette,
+      (#{$paletteKey}: $values)
+    );
+  }
+
+  @return $parsedPalette;
+}
