@@ -1,6 +1,7 @@
+/* eslint-disable guard-for-in */
 import chroma from 'chroma-js';
+/** Main paletter class */
 export default class Paletter {
-
   // palettename--name
   /**
    * Creates an instance of Paletter.
@@ -27,12 +28,7 @@ export default class Paletter {
    * @return {Boolean}
    */
   static isValidColor(value) {
-    try {
-      chroma(value);
-    } catch (error) {
-      return false;
-    }
-    return true;
+    return chroma.valid(value);
   }
 
   /**
@@ -48,6 +44,12 @@ export default class Paletter {
     }
   }
 
+  /**
+   * returns a string containg the palette plus color within it
+   * @param {String} palette palette name
+   * @param {String} key color key within palette
+   * @return {String}
+   */
   _getPaletteKey(palette, key) {
     return `${palette}${this.options.separator}${key}`;
   }
@@ -79,13 +81,15 @@ export default class Paletter {
   /**
    * parses key passed to the getColor method
    * @param {String} paletteKey
-   * @return {Object} containing a property with the palette palette and color key
+   * @return {Object} containing a property with the palette palette and
+   *                  color key
    */
   _parseKey(paletteKey) {
     const parts = paletteKey.split(this.options.separator);
     return {
       palette: parts[0],
-      color: parts[0].length > 1 && parts[1] ? parts[1] : this.options.defaultColorKey,
+      color: parts[0].length > 1 && parts[1] ?
+             parts[1] : this.options.defaultColorKey,
     };
   }
 
@@ -125,8 +129,10 @@ export default class Paletter {
 
   /**
    * @param {String} paletteKey typically contains a palette--key string
-   * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
-   * @return {Object} val: color string stored in color object, name: name in color palette
+   * @param {Array} [callStack=[]] Stores all previous calls to make sure we
+   *                               don't infinite loop
+   * @return {Object} val: color string stored in color object, name: name in
+   *                  color palette
    */
   getColor(paletteKey, callStack = []) {
     if (callStack.indexOf(paletteKey) > -1) {
@@ -165,7 +171,10 @@ export default class Paletter {
             },
             to: {
               key: colorValue,
-              ref: this._getKeyReference(parsedTargetKey.palette, parsedTargetKey.color),
+              ref: this._getKeyReference(
+                parsedTargetKey.palette,
+                parsedTargetKey.color
+              ),
             },
           });
         }

@@ -42,14 +42,14 @@ describe('Paletter', () => {
 
   describe('_validateColors', () => {
     it('should check all colors and print invalid', () => {
-      const invalidColors = Object.assign({}, colors, {invalid: '#0000'});
+      const invalidColors = Object.assign({}, colors, {invalid: '#00g'});
       const paletter = new Paletter(palettes, invalidColors);
 
       jest.spyOn(console, 'log');
 
       paletter._validateColors();
       expect(console.log).toHaveBeenCalledWith(
-        expect.any(String), [['invalid', '#0000']]);
+        expect.any(String), [['invalid', '#00g']]);
     });
   });
 

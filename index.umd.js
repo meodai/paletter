@@ -10,8 +10,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Paletter = function () {
+/* eslint-disable guard-for-in */
+/** Main paletter class */
 
+var Paletter = function () {
   // palettename--name
   /**
    * Creates an instance of Paletter.
@@ -59,6 +61,14 @@ var Paletter = function () {
         console.log('following colors are invalid:', invalidColors);
       }
     }
+
+    /**
+     * returns a string containg the palette plus color within it
+     * @param {String} palette palette name
+     * @param {String} key color key within palette
+     * @return {String}
+     */
+
   }, {
     key: '_getPaletteKey',
     value: function _getPaletteKey(palette, key) {
@@ -97,7 +107,8 @@ var Paletter = function () {
     /**
      * parses key passed to the getColor method
      * @param {String} paletteKey
-     * @return {Object} containing a property with the palette palette and color key
+     * @return {Object} containing a property with the palette palette and
+     *                  color key
      */
 
   }, {
@@ -152,8 +163,10 @@ var Paletter = function () {
 
     /**
      * @param {String} paletteKey typically contains a palette--key string
-     * @param {Array} [callStack=[]] Stores all previous calls to make sure we don't infinite loop
-     * @return {Object} val: color string stored in color object, name: name in color palette
+     * @param {Array} [callStack=[]] Stores all previous calls to make sure we
+     *                               don't infinite loop
+     * @return {Object} val: color string stored in color object, name: name in
+     *                  color palette
      */
 
   }, {
@@ -211,12 +224,7 @@ var Paletter = function () {
   }], [{
     key: 'isValidColor',
     value: function isValidColor(value) {
-      try {
-        chroma(value);
-      } catch (error) {
-        return false;
-      }
-      return true;
+      return chroma.valid(value);
     }
   }]);
 
