@@ -1,6 +1,6 @@
 {
   "brand": {
-    "logo": "blue",
+    "logo": "veryblue",
     "main": "black",
     "hightlight": "lime"
   },
@@ -11,7 +11,7 @@
     "subtitle": "darkGrey"
   },
   "irregularity": {
-    "error": "red",
+    "error": "veryred",
     "warning": "yellow",
     "notification": "brand--hightlight"
   },

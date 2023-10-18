@@ -1,4 +1,5 @@
-import Paletter from '../index';
+import {jest} from '@jest/globals';
+import Paletter from '../index.mjs';
 
 import palettes from './palettes.json';
 import colors from './colors.json';
@@ -7,6 +8,8 @@ describe('Paletter', () => {
   describe('Constructor', () => {
     it('should have default values', () => {
       const paletter = new Paletter(palettes, colors);
+
+      console.log(paletter.options)
 
       expect(paletter.options).toBeTruthy();
       expect(paletter.options.separator).toBe('--');
@@ -71,7 +74,7 @@ describe('Paletter', () => {
       const parsedPalette = paletter.getParsed();
 
       expect(parsedPalette.typography.default).toBe('#010101');
-      expect(parsedPalette.interaction.link).toBe('#00fff1');
+      expect(parsedPalette.interaction.link).toBe('oklch(50% 0.25 260)');
     });
 
     it('should not fail for empty palette links', () => {

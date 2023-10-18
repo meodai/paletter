@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
-const toCss = require('./lib/toCSS.js');
-const toSCSSvars = require('./lib/toSCSSvars.js');
+import * as fs from 'fs';
+import * as path from 'path';
+import {toCSS} from './lib/toCSS.mjs';
+import {toSCSSvars} from './lib/toSCSSvars.mjs';
+import {toHTML} from './lib/toHTML.mjs';
 
-const Paletter = require('.');
+import Paletter from './index.mjs';
 
 const modes = {
   css: (parsedPalette, connections) => {
-    return toCss(
+    return toCSS(
       parsedPalette,
       connections
     );
@@ -25,9 +26,9 @@ const modes = {
     return toSCSSvars(
       parsedPalette,
       connections
-    )
+    );
   },
-  html: require('./lib/toHTML.js'),
+  html: toHTML,
 };
 
 const helptext = `
