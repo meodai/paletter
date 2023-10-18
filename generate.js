@@ -5,6 +5,7 @@ const toCss = require('./lib/toCSS.js');
 const toSCSSvars = require('./lib/toSCSSvars.js');
 
 const Paletter = require('.');
+
 const modes = {
   css: (parsedPalette, connections) => {
     return toCss(
@@ -34,13 +35,15 @@ const helptext = `
     paletterTo --colors ./colors.json --palettes ./palettes.json --mode css >> colors.css
   arguments
     colors: path to JSON containing raw colors as {name: key}
-    palettes: path to JSON containing palettes as {key: referene}
+    palettes: path to JSON containing palettes as {key: reference}
     mode: css, scss or html
+    novalidation: disable validation of colors
 `;
 
 const args = {
   colors: ['--colors', '-c'],
   palettes: ['--palettes', '-p'],
+  noValidation: ['--novalidation', '-n'],
   mode: ['--mode', '-m'],
   help: ['--help', '-h'],
 };
@@ -102,7 +105,9 @@ args.mode.forEach((modeArg) => {
   }
 });
 
-const palette = new Paletter(palettesContent, colorsContent);
+const palette = new Paletter(palettesContent, colorsContent, {
+  validateColors: !args.noValidation.length,
+});
 
 const connections = palette.getConnections();
 const output = modes[mode](
