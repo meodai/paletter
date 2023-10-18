@@ -1,6 +1,6 @@
 {
   "name": "paletter",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "simple JS class to manage color palettes",
   "main": "index.umd.js",
   "es2015": "index.js",
@@ -49,7 +49,10 @@
       "^.+\\.mjs$": "babel-jest"
     },
     "collectCoverage": true,
-    "testMatch": ["**/__tests__/**/*.?(m)js?(x)", "**/?(*.)(spec|test).?(m)js?(x)"]
+    "testMatch": [
+      "**/__tests__/**/*.?(m)js?(x)",
+      "**/?(*.)(spec|test).?(m)js?(x)"
+    ]
   },
   "dependencies": {
     "culori": "^3.2.0"
