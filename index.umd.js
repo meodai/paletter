@@ -1,10 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('chroma-js')) :
-	typeof define === 'function' && define.amd ? define(['chroma-js'], factory) :
-	(global.Paletter = factory(global.chroma));
-}(this, (function (chroma) { 'use strict';
-
-chroma = chroma && chroma.hasOwnProperty('default') ? chroma['default'] : chroma;
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('culori')) :
+	typeof define === 'function' && define.amd ? define(['culori'], factory) :
+	(global.Paletter = factory(global.culori));
+}(this, (function (culori) { 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29,12 +27,16 @@ var Paletter = function () {
     this.defaults = {
       separator: '--',
       modifier: '',
-      defaultColorKey: 'default'
+      defaultColorKey: 'default',
+      validateColors: true
     };
     this.options = Object.assign({}, this.defaults, options);
     this.colors = Object.assign({}, colors);
     this.palette = Object.assign({}, paletteObj);
-    this._validateColors();
+
+    if (this.options.validateColors) {
+      this._validateColors();
+    }
   }
 
   /**

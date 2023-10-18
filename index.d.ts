@@ -32,7 +32,7 @@ export type PaletteColor = { name: ColorReference, value: ColorValue }
 /**
  * Paletter options
  */
-export type options = { separator: string, modifier: string, defaultColorKey: string }
+export type options = { separator: string, modifier: string, defaultColorKey: string, validateColors: boolean}
 
 export type ColorNode = { key: string, ref: string }
 export type Connection = { from: ColorNode, to: ColorNode }

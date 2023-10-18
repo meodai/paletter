@@ -15,11 +15,15 @@ export default class Paletter {
       separator: '--',
       modifier: '',
       defaultColorKey: 'default',
+      validateColors: true,
     };
     this.options = Object.assign({}, this.defaults, options);
     this.colors = Object.assign({}, colors);
     this.palette = Object.assign({}, paletteObj);
-    this._validateColors();
+
+    if (this.options.validateColors) {
+      this._validateColors();
+    }
   }
 
   /**

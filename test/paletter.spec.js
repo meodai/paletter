@@ -12,6 +12,7 @@ describe('Paletter', () => {
       expect(paletter.options.separator).toBe('--');
       expect(paletter.options.modifier).toBe('');
       expect(paletter.options.defaultColorKey).toBe('default');
+      expect(paletter.options.validateColors).toBe(true);
     });
 
     it('should override default values', () => {
@@ -19,12 +20,14 @@ describe('Paletter', () => {
         separator: '.',
         modifier: 'a',
         defaultColorKey: 'notDefault',
+        validateColors: false,
       };
       const paletter = new Paletter(palettes, colors, options);
 
       expect(paletter.options.separator).toBe(options.separator);
       expect(paletter.options.modifier).toBe(options.modifier);
       expect(paletter.options.defaultColorKey).toBe(options.defaultColorKey);
+      expect(paletter.options.validateColors).toBe(options.validateColors);
     });
   });
 
