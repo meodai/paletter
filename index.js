@@ -1,5 +1,5 @@
 /* eslint-disable guard-for-in */
-import { parse } from 'culori';
+import { parse } from 'culori/fn';
 
 /** Main paletter class */
 export default class Paletter {
