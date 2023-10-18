@@ -34,8 +34,8 @@ describe('Paletter', () => {
       expect(Paletter.isValidColor('rgba(0,0,0,0)')).toBeTruthy();
       expect(Paletter.isValidColor('#fff')).toBeTruthy();
       expect(Paletter.isValidColor('#000000')).toBeTruthy();
-      expect(Paletter.isValidColor(1234)).toBeTruthy();
 
+      expect(Paletter.isValidColor(1234)).toBeFalsy();
       expect(Paletter.isValidColor('#00000')).toBeFalsy();
     });
   });

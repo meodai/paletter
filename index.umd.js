@@ -224,7 +224,7 @@ var Paletter = function () {
   }], [{
     key: 'isValidColor',
     value: function isValidColor(value) {
-      return chroma.valid(value);
+      return culori.parse(value) !== undefined;
     }
   }]);
 

@@ -1,5 +1,6 @@
 /* eslint-disable guard-for-in */
-import chroma from 'chroma-js';
+import { parse } from 'culori';
+
 /** Main paletter class */
 export default class Paletter {
   // palettename--name
@@ -28,7 +29,7 @@ export default class Paletter {
    * @return {Boolean}
    */
   static isValidColor(value) {
-    return chroma.valid(value);
+    return parse(value) !== undefined;
   }
 
   /**
