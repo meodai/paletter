@@ -1,14 +1,10 @@
 # paletter 🎨
 simple JS class to manage color palettes by giving them semantic meaning
-and beeing aware of the connections between the colors in your palettes
+and being aware of the connections between the colors in your palettes
 
 ## Installation 💾
-
 ```
-npm install paletter
-```
-```
-yarn add paletter
+npm install paletter --save-dev
 ```
 
 ## Setup
@@ -32,7 +28,7 @@ const palettes = {
   brand: {
     logo: 'blue',
     main: 'black',
-    hightlight: 'lime'
+    highlight: 'lime'
   },
   typography: {
     default: 'brand__main', //optional default color
@@ -43,12 +39,12 @@ const palettes = {
   irregularity : {
     error: 'red',
     warning: 'yellow',
-    notification: 'brand__hightlight'
+    notification: 'brand__highlight'
   },
   interaction: {
-    default: 'brand__hightlight',
+    default: 'brand__highlight',
     link: 'brand__logo',
-    button: 'brand__hightlight'
+    button: 'brand__highlight'
   },
   'interaction--inverted': {
     default: 'white',
@@ -103,17 +99,17 @@ document.querySelector('head').appendChild($style);
 :root {
   --brand-logo: #00fff1;
   --brand-main: #010101;
-  --brand-hightlight: #42ff3f;
+  --brand-highlight: #42ff3f;
   --typography-default: var(--brand-main,#010101);
   --typography-heading: var(--brand-logo,#00fff1);
   --typography-title: var(--brand-main,#010101);
   --typography-subtitle: #212121;
   --irregularity-error: #ff2211;
   --irregularity-warning: #f4f142;
-  --irregularity-notification: var(--brand-hightlight,#42ff3f);
-  --interaction-default: var(--brand-hightlight,#42ff3f);
+  --irregularity-notification: var(--brand-highlight,#42ff3f);
+  --interaction-default: var(--brand-highlight,#42ff3f);
   --interaction-link: var(--brand-logo,#00fff1);
-  --interaction-button: var(--brand-hightlight,#42ff3f);
+  --interaction-button: var(--brand-highlight,#42ff3f);
   --layout-lines: #212121;
 }
 ```
