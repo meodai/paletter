@@ -8,13 +8,15 @@ import {toHTML} from './lib/toHTML.mjs';
 import Paletter from './index.mjs';
 
 const modes = {
-  css: (parsedPalette, connections) => {
-    return toCSS(
-      parsedPalette,
-      connections
-    );
+  css: ({parsedPalette, connections, colors} = {}) => {
+    return toCSS({
+      obj: parsedPalette,
+      links: connections,
+      palettesContent,
+      colors,
+    });
   },
-  scss: (palette) => {
+  scss: ({palette} = {}) => {
     const paletteStr = JSON.stringify(palette, null, 2)
                            .replace(/{/g, '(')
                            .replace(/}/g, ')')
@@ -22,13 +24,15 @@ const modes = {
 
     return `$paletter-colors: ${paletteStr};`;
   },
-  scssvars: (parsedPalette, connections) => {
+  scssvars: ({parsedPalette, connections} = {}) => {
     return toSCSSvars(
       parsedPalette,
       connections
     );
   },
-  html: toHTML,
+  html: ({parsedPalette, connections, palette, palettes} = {}) => toHTML(
+    {obj: parsedPalette, connections, palette, palettes}
+  ),
 };
 
 const helptext = `
@@ -39,6 +43,7 @@ const helptext = `
     palettes: path to JSON containing palettes as {key: reference}
     mode: css, scss or html
     novalidation: disable validation of colors
+    resolvevars: resolve variables in palettes
 `;
 
 const args = {
@@ -55,7 +60,8 @@ const defaults = {
 
 const isJsFile = (pathName) => {
   const fileName = path.basename(pathName);
-  return path.extname(fileName) === '.js';
+  const extname = path.extname(fileName);
+  return extname && extname.match(/\.(js|mjs)$/) !== null;
 };
 
 args.help.forEach((helpArg) => {
@@ -111,11 +117,12 @@ const palette = new Paletter(palettesContent, colorsContent, {
 });
 
 const connections = palette.getConnections();
-const output = modes[mode](
-  palette.getParsed(),
+const output = modes[mode]({
+  parsedPalette: palette.getParsed(),
   connections,
   palette,
-  palettesContent
-);
+  palettesContent,
+  colors: colorsContent,
+});
 
 process.stdout.write(output);
