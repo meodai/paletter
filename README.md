@@ -22,6 +22,7 @@ const colors = {
   yellow: '#f4f142',
   darkGrey: '#212121',
   lime: '#42ff3f',
+  white: '#ffffff'
 };
 ```
 
@@ -34,20 +35,23 @@ const palettes = {
     hightlight: 'lime'
   },
   typography: {
-    default: 'brand--main', //optional default color
-    heading: 'brand--logo', //links to palettes.brand
-    title: 'brand--main',
+    default: 'brand__main', //optional default color
+    heading: 'brand__logo', //links to palettes.brand
+    title: 'brand__main',
     sub-title: 'darkGrey',
   },
   irregularity : {
     error: 'red',
     warning: 'yellow',
-    notification: 'brand--hightlight'
+    notification: 'brand__hightlight'
   },
   interaction: {
-    default: 'brand--hightlight',
-    link: 'brand--logo',
-    button: 'brand--hightlight'
+    default: 'brand__hightlight',
+    link: 'brand__logo',
+    button: 'brand__hightlight'
+  },
+  'interaction--inverted': {
+    default: 'white',
   },
   layout: {
     lines: 'darkGrey'
@@ -61,7 +65,7 @@ const palettes = {
 const palette = new Paletter(palettes, colors);
 
 palette.get('typography'); // => returns the default color (#010101)
-palette.get('irregularity--notification'); // => {value: #42ff3f, name: lime}
+palette.get('irregularity__notification'); // => {value: #42ff3f, name: lime}
 
 palette.getParsed() // will return your full palette with hex values instead of links to other items
 
