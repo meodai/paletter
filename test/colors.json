@@ -6,5 +6,6 @@
   "darkGrey": "#212121",
   "lime": "#42ff3f",
   "veryred": "color(display-p3 1 0 0)",
-  "veryblue": "oklch(50% 0.25 260)"
+  "veryblue": "oklch(50% 0.25 260)",
+  "white": "#ffffff"
 }

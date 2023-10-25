@@ -5,20 +5,23 @@
     "hightlight": "lime"
   },
   "typography": {
-    "default": "brand--main",
-    "heading": "brand--logo",
-    "title": "brand--main",
+    "default": "brand__main",
+    "heading": "brand__logo",
+    "title": "brand__main",
     "subtitle": "darkGrey"
   },
   "irregularity": {
     "error": "veryred",
     "warning": "yellow",
-    "notification": "brand--hightlight"
+    "notification": "brand__hightlight"
   },
   "interaction": {
-    "default": "brand--hightlight",
-    "link": "brand--logo",
-    "button": "brand--hightlight"
+    "default": "brand__hightlight",
+    "link": "brand__logo",
+    "button": "brand__hightlight"
+  },
+  "interaction--inverted": {
+    "default": "brand__main"
   },
   "layout": {
     "lines": "darkGrey"

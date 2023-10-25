@@ -4334,8 +4334,8 @@
 	   */
 	  constructor(paletteObj, colors, options = {}) {
 	    this.defaults = {
-	      separator: '--',
-	      modifier: '',
+	      separator: '__',
+	      modifier: '--',
 	      defaultColorKey: 'default',
 	      validateColors: true,
 	    };
@@ -4377,6 +4377,12 @@
 	   * @param {String} key color key within palette
 	   * @return {String}
 	   */
+	  /**
+	   * Returns the palette key for a given palette and key
+	   * @param {string} palette The name of the palette
+	   * @param {string} key The key of the color within the palette
+	   * @return {string} The palette key
+	   */
 	  _getPaletteKey(palette, key) {
 	    return `${palette}${this.options.separator}${key}`;
 	  }
@@ -4395,6 +4401,21 @@
 	          this.getColor(this._getPaletteKey(palette, key)).value;
 	      }
 	    }
+
+	    // check if there are any modifiers in the palette and if so,
+	    // extend the the modifier palette with the original palette
+	    for (let palette in palettes) {
+	      if (this._isPaletteModifier(palette)) {
+	        const paletteName = palette.split(this.options.modifier)[0];
+	        parsedPalette[palette] = Object.assign(
+	          {},
+	          parsedPalette[paletteName],
+	          parsedPalette[palette]
+	        );
+	      }
+	    }
+
+
 	    return parsedPalette;
 	  }
 
@@ -4430,6 +4451,15 @@
 	  }
 
 	  /**
+	   * Checks if a palette contains a modifier
+	   * @param {string} palette The name of the palette
+	   * @return {boolean} True if the palette contains a modifier, false otherwise
+	   */
+	  _isPaletteModifier(palette) {
+	    return palette.indexOf(this.options.modifier) !== -1;
+	  }
+
+	  /**
 	   * returns a color value from this.palette
 	   * and checks if the palette and color exists
 	   *
@@ -4441,13 +4471,13 @@
 	  _getKeyReference(palette, key) {
 	    let paletteRef;
 
-	    if (this.palette.hasOwnProperty(palette)) {
+	    if (Object.prototype.hasOwnProperty.call(this.palette, palette)) {
 	      paletteRef = this.palette[palette];
 	    } else {
 	      throw new Error(`no palette called "${palette}"`);
 	    }
 
-	    if (paletteRef.hasOwnProperty(key)) {
+	    if (Object.prototype.hasOwnProperty.call(paletteRef, key)) {
 	      return paletteRef[key];
 	    } else {
 	      throw new Error(`no color called "${key}" in "${palette}"`);
@@ -4455,7 +4485,7 @@
 	  }
 
 	  /**
-	   * @param {String} paletteKey typically contains a palette--key string
+	   * @param {String} paletteKey typically contains a palette__key string
 	   * @param {Array} [callStack=[]] Stores all previous calls to make sure we
 	   *                               don't infinite loop
 	   * @return {Object} val: color string stored in color object, name: name in
