@@ -2,7 +2,7 @@
   "brand": {
     "logo": "veryblue",
     "main": "black",
-    "hightlight": "lime"
+    "highlight": "lime"
   },
   "typography": {
     "default": "brand__main",
@@ -13,12 +13,12 @@
   "irregularity": {
     "error": "veryred",
     "warning": "yellow",
-    "notification": "brand__hightlight"
+    "notification": "brand__highlight"
   },
   "interaction": {
-    "default": "brand__hightlight",
+    "default": "brand__highlight",
     "link": "brand__logo",
-    "button": "brand__hightlight"
+    "button": "brand__highlight"
   },
   "interaction--inverted": {
     "default": "brand__main"
