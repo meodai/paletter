@@ -4,7 +4,7 @@
   "description": "simple JS class to manage color palettes",
   "main": "index.umd.js",
   "es2015": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "module": "index.js",
   "scripts": {
     "test": "npm run test:jest && npm run test:cli",
