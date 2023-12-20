@@ -272,24 +272,23 @@
   // draw connections between palettes
 
   document.body.innerHTML = createSVG(table.tableBoundingRect.w, table.tableBoundingRect.h,
-    `
-<style>
+    `<style>
   .palette-table {
     fill: white;
     stroke: black;
     stroke-width: 1;
   }
-
   .palette-table__row {
     fill: none;
     stroke: black;
     stroke-width: 1;
   }
-
+  text {
+    font-family: monospace;
+  }
   .palette-table__label {
     fill: black;
   }
-
   .palette-table__label--header {
     font-weight: bold;
     fill: white
@@ -360,7 +359,6 @@
       $text.setAttribute('x', padding[0]);
       $text.setAttribute('y', textTop);
       $text.setAttribute('font-size', fontSize);
-      $text.setAttribute('font-family', fontFamily);
       $text.textContent = label;
 
       $g.appendChild($rect);
