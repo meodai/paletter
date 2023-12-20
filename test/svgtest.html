@@ -191,7 +191,7 @@
   });
 
 
-  const table = tableView(tableEntires, { useMaxDiagonal: false, gap: 0 });
+  const table = tableView(tableEntires, { useMaxDiagonal: true, gap: 0 });
 
   const allTableEntries = {};
 
@@ -297,7 +297,7 @@
     fill: black;
   }
 </style>
-    <circle cx="${table.tableBoundingRect.centerX}" cy="${table.tableBoundingRect.centerY}" r="${table.tableBoundingRect.r}" fill="none" stroke="black"/>`
+    <!--circle cx="${table.tableBoundingRect.centerX}" cy="${table.tableBoundingRect.centerY}" r="${table.tableBoundingRect.r}" fill="none" stroke="black"/-->`
     + tableItems
   );
 
