@@ -4,71 +4,243 @@
   <title>SVG Test</title>
   <meta charset="utf-8">
 </head>
+<style>
+  .palette-table {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .palette-table__row {
+    fill: none;
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .palette-table__label {
+    fill: black;
+  }
+
+  .palette-table__label--header {
+    font-weight: bold;
+    fill: white
+  }
+  .palette-table__row--header {
+    fill: black;
+  }
+</style>
 <body>
 </body>
 <script type="module">
   import { tableView } from '../lib/tableView.js';
+  import '../index.umd.js';
 
-    const svgNamespace = 'http://www.w3.org/2000/svg'
+  const svgNamespace = 'http://www.w3.org/2000/svg'
 
-    /**
-     * createSVG - create a new SVG element with a viewBox
-     * @param {number} w - width of the viewBox
-     * @param {number} h - height of the viewBox
-     * @param {string} block - block of SVG elements
-     * @return {SVGElement} - SVG element with a viewBox
-     */
-    function createSVG(w, h, block) {
-      return `<svg xmlns="${svgNamespace}" viewBox="0 0 ${w} ${h}">${block}</svg>`;
-    };
+  /**
+   * createSVG - create a new SVG element with a viewBox
+   * @param {number} w - width of the viewBox
+   * @param {number} h - height of the viewBox
+   * @param {string} block - block of SVG elements
+   * @return {SVGElement} - SVG element with a viewBox
+   */
+  function createSVG(w, h, block) {
+    return `<svg xmlns="${svgNamespace}" viewBox="0 0 ${w} ${h}">${block}</svg>`;
+  };
 
-    /**
-     * tableItemToSVG - convert a table item to an SVG element
-     * @param {object} item - table item
-     * @return {string} - SVG element
-     */
-    function tableItemToSVG(item) {
-      return `
-      <circle
-        cx="${item.cx}" cy="${item.cy}" r="${item.diagonalHalf}"
-        fill="none" stroke="black" stroke-width="1" />
-      <rect
-        width="${item.w}" height="${item.h}"
-        x="${item.left}" y="${item.top}"
-        fill="${item.c}" stroke="black" stroke-width="1"
-      />
-      `;
+  /**
+   * tableItemToSVG - convert a table item to an SVG element
+   * @param {object} item - table item
+   * @return {string} - SVG element
+   */
+  function tableItemToSVG(item) {
+    return `
+    <circle
+      cx="${item.cx}" cy="${item.cy}" r="${item.diagonalHalf}"
+      fill="none" stroke="black" stroke-width="1" />
+    <rect
+      width="${item.w}" height="${item.h}"
+      x="${item.left}" y="${item.top}"
+      fill="${item.c}" stroke="black" stroke-width="1"
+    />
+    `;
+  }
+
+  function generateShape(minW, maxW, minH, maxH, i) {
+    return {
+      w: minW + Math.random() * (maxW - minW),
+      h: minH + Math.random() * (maxH - minH),
+      c: `lch(95 40 ${i * 360})`,
     }
+  }
 
-
-    function generateShape(minW, maxW, minH, maxH, i) {
-      return {
-        w: minW + Math.random() * (maxW - minW),
-        h: minH + Math.random() * (maxH - minH),
-        c: `lch(96 90 ${i * 360})`,
-      }
-    }
-
-    const randomShapes = new Array(6).fill('').map(
-      (_, i) => generateShape(
-        110,
-        550,
-        200,
-        550,
-        i / (6 + 1)
-      )
-    );
-
-    const table = tableView(randomShapes, { useMaxDiagonal: true, gap: 100});
-
-    console.log(table);
-
-    const tableItems = `<g>${table.tableItems.map(tableItemToSVG).join('')}</g>`;
-
-    document.body.innerHTML = createSVG(table.tableBoundingRect.w, table.tableBoundingRect.h,
-      `<circle cx="${table.tableBoundingRect.centerX}" cy="${table.tableBoundingRect.centerY}" r="${table.tableBoundingRect.r}" fill="none" stroke="black"/>`
-       + tableItems
+  const randomShapes = new Array(6).fill('').map(
+    (_, i) => generateShape(
+      110,
+      550,
+      200,
+      550,
+      (i  + 1) / 6
     )
+  );
+
+  const colors = {
+    "blue": "#00fff1",
+    "red": "#ff2211",
+    "black": "#010101",
+    "yellow": "#f4f142",
+    "darkGrey": "#212121",
+    "lime": "#42ff3f",
+    "veryred": "color(display-p3 1 0 0)",
+    "veryblue": "oklch(50% 0.25 260)",
+    "white": "#ffffff"
+  };
+
+  const palettes = {
+    "brand": {
+      "logo": "veryblue",
+      "main": "black",
+      "highlight": "lime"
+    },
+    "typography": {
+      "default": "brand__main",
+      "heading": "brand__logo",
+      "title": "brand__main",
+      "subtitle": "darkGrey"
+    },
+    "irregularity": {
+      "error": "veryred",
+      "warning": "yellow",
+      "notification": "brand__highlight"
+    },
+    "interaction": {
+      "default": "brand__highlight",
+      "link": "brand__logo",
+      "button": "brand__highlight"
+    },
+    "interaction--inverted": {
+      "default": "brand__main"
+    },
+    "layout": {
+      "lines": "darkGrey"
+    }
+  }
+
+  const paletter = new Paletter(
+    palettes,
+    colors,
+  );
+
+  console.log(paletter.getConnections());
+  console.log(paletter.paletteKeys);
+  console.log(paletter);
+
+  const connections = paletter.getConnections();
+
+  console.log(connections);
+
+  const tableEntires = paletter.paletteKeys.map(paletteKey => {
+    const palette = paletter.palette[paletteKey];
+
+    return createTableItemFromPalette(
+      paletteKey, palette
+    );
+  });
+
+
+  const table = tableView(tableEntires, { useMaxDiagonal: true, gap: 0 });
+
+  const tableItems = `<g>${table.tableItems.map((tableItem, i) => {
+    const $group = tableItem.$g
+    $group.setAttribute('transform', `translate(${tableItem.left}, ${tableItem.top})`);
+    // draw connections per palette
+
+    console.log(tableItem, 'tableItem');
+
+    return $group.outerHTML;
+    //tableItem
+  }).join('')}</g>`;
+
+  // draw connections between palettes
+
+  document.body.innerHTML = createSVG(table.tableBoundingRect.w, table.tableBoundingRect.h,
+    `<circle cx="${table.tableBoundingRect.centerX}" cy="${table.tableBoundingRect.centerY}" r="${table.tableBoundingRect.r}" fill="none" stroke="black"/>`
+    + tableItems
+  );
+
+  function createTableItemFromPalette(
+    title,
+    entires,
+    {
+      widthPerLetter = 7,
+      fontSize = 10,
+      lineheight = 1.5,
+      fontFamily = 'monospace',
+      padding = [10, 5],
+    } = {}
+  ) {
+    const text = title;
+
+    const allLabels = [title, ...Object.keys(entires)];
+    const maxLabelLength = Math.max(...allLabels.map(label => label.length));
+
+    const heightPerItem = fontSize * lineheight + padding[1] * 2;
+
+    const w = maxLabelLength * widthPerLetter + padding[0] * 2;
+    const h = allLabels.length * heightPerItem;
+
+    const $g = document.createElementNS(svgNamespace, 'g');
+    const $rect = document.createElementNS(svgNamespace, 'rect');
+    $rect.classList.add('palette-table');
+    $rect.setAttribute('width', w);
+    $rect.setAttribute('height', h);
+
+    $g.appendChild($rect);
+
+    const topPositions = {};
+
+    // add a row as rect and text per entry & title
+    allLabels.forEach((label, i) => {
+      const isHeader = label === title;
+      const $rect = document.createElementNS(svgNamespace, 'rect');
+      $rect.classList.add('palette-table__row');
+      if (isHeader) {
+        $rect.classList.add('palette-table__row--header');
+      }
+      const rectTop =  i * heightPerItem;
+      const textTop = rectTop + heightPerItem / 2 + fontSize / 2 - 1;
+      topPositions[label] = {
+        rectTop,
+        textTop,
+      }
+      $rect.setAttribute('width', w);
+      $rect.setAttribute('height', heightPerItem);
+      $rect.setAttribute('y', rectTop);
+
+      const $text = document.createElementNS(svgNamespace, 'text');
+      $text.classList.add('palette-table__label');
+      if (isHeader) {
+        $text.classList.add('palette-table__label--header');
+      }
+      $text.setAttribute('x', padding[0]);
+      $text.setAttribute('y', textTop);
+      $text.setAttribute('font-size', fontSize);
+      $text.setAttribute('font-family', fontFamily);
+      $text.textContent = label;
+
+      $g.appendChild($rect);
+      $g.appendChild($text);
+    });
+
+
+    return {
+      tableTitle: title,
+      w,
+      h,
+      $g,
+      topPositions,
+    }
+  }
 
 </script>
 </html>

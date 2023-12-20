@@ -24,6 +24,8 @@ export default class Paletter {
     if (this.options.validateColors) {
       this._validateColors();
     }
+
+    this.connections = this._parseConnections();
   }
 
   /**
@@ -50,18 +52,12 @@ export default class Paletter {
   }
 
   /**
-   * returns a string containg the palette plus color within it
-   * @param {String} palette palette name
-   * @param {String} key color key within palette
-   * @return {String}
-   */
-  /**
    * Returns the palette key for a given palette and key
    * @param {string} palette The name of the palette
    * @param {string} key The key of the color within the palette
    * @return {string} The palette key
    */
-  _getPaletteKey(palette, key) {
+  getPaletteKey(palette, key) {
     return `${palette}${this.options.separator}${key}`;
   }
 
@@ -76,7 +72,7 @@ export default class Paletter {
       parsedPalette[palette] = {};
       for (let key in palettes[palette]) {
         parsedPalette[palette][key] =
-          this.getColor(this._getPaletteKey(palette, key)).value;
+          this.getColor(this.getPaletteKey(palette, key)).value;
       }
     }
 
@@ -93,7 +89,6 @@ export default class Paletter {
       }
     }
 
-
     return parsedPalette;
   }
 
@@ -105,12 +100,19 @@ export default class Paletter {
   }
 
   /**
+   * @return {Array} array of palette keys
+   */
+  get paletteKeys() {
+    return Object.keys(this.palette);
+  }
+
+  /**
    * parses key passed to the getColor method
    * @param {String} paletteKey
    * @return {Object} containing a property with the palette palette and
    *                  color key
    */
-  _parseKey(paletteKey) {
+  parseKey(paletteKey) {
     const parts = paletteKey.split(this.options.separator);
     return {
       palette: parts[0],
@@ -174,7 +176,7 @@ export default class Paletter {
       throw new Error('you have infinite recursion in your palette');
     }
 
-    const parsedKey = this._parseKey(paletteKey);
+    const parsedKey = this.parseKey(paletteKey);
     const colorKey = this._getKeyReference(parsedKey.palette, parsedKey.color);
 
     if (this._isPaletteLink(colorKey)) {
@@ -191,18 +193,18 @@ export default class Paletter {
    * Returns all connections of between palettes
    * @return {Array} List of all connections
    */
-  getConnections() {
+  _parseConnections() {
     const connections = [];
     for (const paletteKey in this.palette) {
       const palette = this.palette[paletteKey];
       for (const colorName in palette) {
         const colorValue = palette[colorName];
         if (this._isPaletteLink(colorValue)) {
-          const parsedTargetKey = this._parseKey(colorValue);
+          const parsedTargetKey = this.parseKey(colorValue);
           connections.push({
             from: {
-              key: this._getPaletteKey(paletteKey, colorName),
-              ref: this._parseKey(colorValue),
+              key: this.getPaletteKey(paletteKey, colorName),
+              ref: this.parseKey(colorValue),
             },
             to: {
               key: colorValue,
@@ -216,5 +218,22 @@ export default class Paletter {
       }
     }
     return connections;
+  }
+
+  /**
+   * @return {Array} List of all connections
+   */
+  getConnections() {
+    return this.connections;
+  }
+
+  /**
+   * @param {String} paletteKey typically contains a palette__key string
+   * @return {Array} List of all connections from the given palette
+   */
+  getConnection(paletteKey) {
+    return this.connections.filter((connection) =>
+      connection.from.key === paletteKey
+    );
   }
 }

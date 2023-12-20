@@ -59,11 +59,11 @@ describe('Paletter', () => {
     });
   });
 
-  describe('_getPaletteKey', () => {
+  describe('getPaletteKey', () => {
     it('should generate correct key', () => {
       const separator = '.';
       const paletter = new Paletter({}, {}, {separator});
-      expect(paletter._getPaletteKey('test', 'key'))
+      expect(paletter.getPaletteKey('test', 'key'))
         .toBe(`test${separator}key`);
     });
   });
