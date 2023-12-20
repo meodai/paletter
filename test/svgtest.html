@@ -48,96 +48,164 @@
     return `<svg xmlns="${svgNamespace}" viewBox="0 0 ${w} ${h}">${block}</svg>`;
   };
 
-  /**
-   * tableItemToSVG - convert a table item to an SVG element
-   * @param {object} item - table item
-   * @return {string} - SVG element
-   */
-  function tableItemToSVG(item) {
-    return `
-    <circle
-      cx="${item.cx}" cy="${item.cy}" r="${item.diagonalHalf}"
-      fill="none" stroke="black" stroke-width="1" />
-    <rect
-      width="${item.w}" height="${item.h}"
-      x="${item.left}" y="${item.top}"
-      fill="${item.c}" stroke="black" stroke-width="1"
-    />
-    `;
-  }
-
-  function generateShape(minW, maxW, minH, maxH, i) {
-    return {
-      w: minW + Math.random() * (maxW - minW),
-      h: minH + Math.random() * (maxH - minH),
-      c: `lch(95 40 ${i * 360})`,
-    }
-  }
-
-  const randomShapes = new Array(6).fill('').map(
-    (_, i) => generateShape(
-      110,
-      550,
-      200,
-      550,
-      (i  + 1) / 6
-    )
-  );
-
   const colors = {
-    "blue": "#00fff1",
-    "red": "#ff2211",
-    "black": "#010101",
-    "yellow": "#f4f142",
-    "darkGrey": "#212121",
-    "lime": "#42ff3f",
-    "veryred": "color(display-p3 1 0 0)",
-    "veryblue": "oklch(50% 0.25 260)",
-    "white": "#ffffff"
+    "zueriblau-670": "rgb(0, 60, 180)",
+    "nachtblau-930": "rgb(0, 0, 66)",
+    "nachtblau-930-60": "rgba(0, 0, 66, 0.6)",
+    "nachtblau-840": "rgb(0, 0, 120)",
+    "nachtblau-650": "rgb(49, 65, 180)",
+    "nachtblau-430": "rgb(101, 134, 205)",
+    "nachtblau-310": "rgb(141, 169, 226)",
+    "nachtblau-100": "rgb(211, 227, 253)",
+    "nachtblau-170": "rgb(187, 209, 247)",
+    "nachtblau-60": "rgb(229, 238, 254)",
+    "nachtblau-40": "rgb(239, 245, 255)",
+    "seeblau-310": "rgb(0, 190, 200)",
+    "seeblau-200": "rgb(118, 217, 222)",
+    "seeblau-100": "rgb(180, 239, 242)",
+    "seeblau-40": "rgb(225, 249, 251)",
+    "weiss": "rgb(255, 255, 255)",
+    "weiss-30": "rgba(255, 255, 255, .3)",
+    "weiss-60": "rgba(255, 255, 255, .6)",
+    "grau-310": "rgb(168, 168, 168)",
+    "grau-200": "rgb(199, 199, 199)",
+    "grau-100": "rgb(227, 227, 227)",
+    "gruen-530": "rgb(28, 133, 76)",
+    "gruen-310": "rgb(91, 194, 127)",
+    "gruen-300": "rgb(150, 219, 169)",
+    "gruen-40": "rgb(236, 249, 225)",
+    "korall-530": "rgb(190, 58, 55)",
+    "korall-310": "rgb(245, 129, 132)",
+    "korall-200": "rgb(254, 174, 177)",
+    "korall-40": "rgb(255, 240, 241)",
+    "orange-530": "rgb(170, 85, 0)",
+    "orange-310": "rgb(236, 144, 28)",
+    "orange-40": "rgb(255, 244, 220)",
+    "limmatblau-490": "rgb(0, 108, 255)",
+    "transparent": "rgba(255, 255, 255, 0)",
+    "deprecated": "rgb(255, 0, 255)"
   };
 
   const palettes = {
-    "brand": {
-      "logo": "veryblue",
-      "main": "black",
-      "highlight": "lime"
+      "brand": {
+        "default": "zueriblau-670",
+        "shade": "nachtblau-840",
+        "highlight": "seeblau-310",
+        "contrast": "weiss"
     },
-    "typography": {
-      "default": "brand__main",
-      "heading": "brand__logo",
-      "title": "brand__main",
-      "subtitle": "darkGrey"
+      "text": {
+        "default": "brand__default",
+        "title": "text__default",
+        "inverted": "brand__contrast",
+        "disabled": "shade__dark",
+        "highlight": "brand__highlight",
+        "muted": "nachtblau-430",
+        "muted-inverted": "text__inverted",
+        "error": "notification__negative-text"
     },
-    "irregularity": {
-      "error": "veryred",
-      "warning": "yellow",
-      "notification": "brand__highlight"
+      "interaction": {
+        "default": "brand__default",
+        "on-default": "text__inverted",
+        "tonal": "nachtblau-100",
+        "on-tonal": "interaction__default",
+        "hover": "limmatblau-490",
+        "on-hover": "text__inverted",
+        "active": "interaction__hover",
+        "on-active": "interaction__on-hover",
+        "focus": "interaction__default",
+        "disabled": "shade__light",
+        "on-disabled": "shade__dark",
+        "disabled-text": "interaction__on-disabled"
     },
-    "interaction": {
-      "default": "brand__highlight",
-      "link": "brand__logo",
-      "button": "brand__highlight"
+      "interaction-inverted": {
+        "default": "brand__contrast",
+        "on-default": "brand__default",
+        "tonal": "nachtblau-650",
+        "on-tonal": "brand__contrast",
+        "hover": "seeblau-200",
+        "on-hover": "interaction-inverted__on-default",
+        "active": "interaction-inverted__hover",
+        "on-active": "interaction-inverted__on-hover",
+        "focus": "interaction__hover",
+        "disabled": "weiss-30",
+        "on-disabled": "weiss-30",
+        "disabled-text": "weiss-60"
     },
-    "interaction--inverted": {
-      "default": "brand__main"
+      "input": {
+        "background": "context__normal",
+        "line": "interaction__default",
+        "line-hover": "interaction__hover",
+        "line-active": "interaction__active"
     },
-    "layout": {
-      "lines": "darkGrey"
+      "input-inverted": {
+        "background": "transparent",
+        "line": "interaction-inverted__default",
+        "line-hover": "interaction-inverted__hover",
+        "line-active": "interaction-inverted__active"
+    },
+      "line": {
+        "layout": "nachtblau-170",
+        "data": "brand__default",
+        "data-strong": "line__data"
+    },
+      "line-inverted": {
+        "layout": "interaction-inverted__tonal",
+        "data": "weiss",
+        "data-strong": "weiss"
+    },
+      "shade": {
+        "light": "grau-100",
+        "medium": "grau-200",
+        "dark": "grau-310"
+    },
+      "notification": {
+        "negative": "korall-310",
+        "negative-text": "korall-530",
+        "negative-text-inverted": "korall-200",
+        "negative-background": "korall-40",
+        "positive": "gruen-310",
+        "positive-text": "gruen-530",
+        "positive-text-inverted": "gruen-300",
+        "positive-background": "gruen-40",
+        "neutral": "brand__default",
+        "neutral-text": "text__default",
+        "neutral-background": "context__weak",
+        "warning": "orange-310",
+        "warning-text": "orange-530",
+        "warning-text-inverted": "orange-310",
+        "warning-background": "orange-40"
+    },
+      "pikto": {
+        "decoration": "brand__highlight",
+        "decoration-inverted": "seeblau-200"
+    },
+      "layout": {
+        "background": "context__normal",
+        "navigation": "context__strong",
+        "header": "context__normal",
+        "header-inverted": "context__strong",
+        "footer": "context__normal",
+        "modal-backdrop": "nachtblau-930-60",
+        "progress": "interaction__active",
+        "page-sidenav": "context__normal",
+        "page-sidenav-inverted": "context__strong"
+    },
+      "context": {
+        "normal": "brand__contrast",
+        "weak": "nachtblau-40",
+        "strong": "brand__shade",
+        "strong-alt": "context__strong",
+        "interactive": "context__weak",
+        "none": "transparent"
     }
-  }
+    }
 
   const paletter = new Paletter(
     palettes,
     colors,
   );
 
-  console.log(paletter.getConnections());
-  console.log(paletter.paletteKeys);
-  console.log(paletter);
-
   const connections = paletter.getConnections();
-
-  console.log(connections);
 
   const tableEntires = paletter.paletteKeys.map(paletteKey => {
     const palette = paletter.palette[paletteKey];
@@ -148,18 +216,83 @@
   });
 
 
-  const table = tableView(tableEntires, { useMaxDiagonal: true, gap: 0 });
+  const table = tableView(tableEntires, { useMaxDiagonal: false, gap: 0 });
+
+  const allTableEntries = {};
 
   const tableItems = `<g>${table.tableItems.map((tableItem, i) => {
-    const $group = tableItem.$g
+    const $group = tableItem.$g;
+
+    /** debug circle */
+    /*
+    const $circle = document.createElementNS(svgNamespace, 'circle');
+    $circle.setAttribute('cx', tableItem.cx - tableItem.left);
+    $circle.setAttribute('cy', tableItem.cy - tableItem.top);
+    $circle.setAttribute('r', tableItem.diagonalHalf);
+    $circle.setAttribute('fill', 'none');
+    $circle.setAttribute('stroke', 'black');
+    $circle.setAttribute('stroke-width', '.25');
+    $group.appendChild($circle);*/
+    /** end debug circle */
+
     $group.setAttribute('transform', `translate(${tableItem.left}, ${tableItem.top})`);
     // draw connections per palette
 
     console.log(tableItem, 'tableItem');
+    //allTableEntries
+    Object.keys( tableItem.topPositions ).forEach((label) => {
+      if (label !== tableItem.tableTitle) {
+        const paletteKey = paletter.getPaletteKey(tableItem.tableTitle, label);
+        const isLeft = tableItem.left < table.tableBoundingRect.centerX;
+        const pointX = isLeft ? tableItem.left + tableItem.w : tableItem.left;
+        const pointY = tableItem.topPositions[label].textTop + tableItem.top;
+
+        allTableEntries[paletteKey] = {
+          key: paletteKey,
+          x: pointX,
+          y: pointY,
+          isLeft,
+          color: paletter.getColor(paletteKey).value,
+        };
+      }
+    });
 
     return $group.outerHTML;
     //tableItem
-  }).join('')}</g>`;
+  }).join('')}</g>
+  <g>
+    ${
+      connections.map(connection => {
+        const fromPoint = allTableEntries[connection.from.key];
+        const toPoint = allTableEntries[connection.to.key];
+        const $path = document.createElementNS(svgNamespace, 'path');
+        // M 5 10 c 5 -3 5 3 10 0
+        const path = `M ${fromPoint.x} ${fromPoint.y} c ${fromPoint.isLeft ? 20 : -20} 0 ${toPoint.isLeft ? 20 : -20} 3 ${toPoint.x - fromPoint.x} ${toPoint.y - fromPoint.y}`;
+        $path.setAttribute('d', `${path}`);
+        $path.setAttribute('stroke', fromPoint.color);
+        $path.setAttribute('stroke-width', '2');
+        $path.setAttribute('fill', 'none');
+        return $path.outerHTML;
+      }).join('')
+    }
+    ${
+      Object.keys(allTableEntries).map(key => {
+        const entry = allTableEntries[key];
+        console.log(entry)
+        const $circle = document.createElementNS(svgNamespace, 'circle');
+        $circle.setAttribute('cx', entry.x);
+        $circle.setAttribute('cy', entry.y);
+        $circle.setAttribute('r', 3);
+        $circle.setAttribute('fill', entry.color);
+        $circle.setAttribute('stroke', 'black');
+        $circle.setAttribute('stroke-width', '.25');
+        return $circle.outerHTML;
+      }).join('')
+    }
+  </g>
+  `;
+
+
 
   // draw connections between palettes
 
