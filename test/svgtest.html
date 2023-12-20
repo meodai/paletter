@@ -4,31 +4,6 @@
   <title>SVG Test</title>
   <meta charset="utf-8">
 </head>
-<style>
-  .palette-table {
-    fill: white;
-    stroke: black;
-    stroke-width: 1;
-  }
-
-  .palette-table__row {
-    fill: none;
-    stroke: black;
-    stroke-width: 1;
-  }
-
-  .palette-table__label {
-    fill: black;
-  }
-
-  .palette-table__label--header {
-    font-weight: bold;
-    fill: white
-  }
-  .palette-table__row--header {
-    fill: black;
-  }
-</style>
 <body>
 </body>
 <script type="module">
@@ -198,7 +173,7 @@
         "interactive": "context__weak",
         "none": "transparent"
     }
-    }
+  }
 
   const paletter = new Paletter(
     palettes,
@@ -220,32 +195,13 @@
 
   const allTableEntries = {};
 
-  const tableItems = `<g>${table.tableItems.map((tableItem, i) => {
-    const $group = tableItem.$g;
-
-    /** debug circle */
-    /*
-    const $circle = document.createElementNS(svgNamespace, 'circle');
-    $circle.setAttribute('cx', tableItem.cx - tableItem.left);
-    $circle.setAttribute('cy', tableItem.cy - tableItem.top);
-    $circle.setAttribute('r', tableItem.diagonalHalf);
-    $circle.setAttribute('fill', 'none');
-    $circle.setAttribute('stroke', 'black');
-    $circle.setAttribute('stroke-width', '.25');
-    $group.appendChild($circle);*/
-    /** end debug circle */
-
-    $group.setAttribute('transform', `translate(${tableItem.left}, ${tableItem.top})`);
-    // draw connections per palette
-
-    console.log(tableItem, 'tableItem');
-    //allTableEntries
-    Object.keys( tableItem.topPositions ).forEach((label) => {
+  table.tableItems.map((tableItem, i) => {
+    Object.keys(tableItem.topPositions).forEach((label) => {
       if (label !== tableItem.tableTitle) {
         const paletteKey = paletter.getPaletteKey(tableItem.tableTitle, label);
         const isLeft = tableItem.left < table.tableBoundingRect.centerX;
         const pointX = isLeft ? tableItem.left + tableItem.w : tableItem.left;
-        const pointY = tableItem.topPositions[label].textTop + tableItem.top;
+        const pointY = tableItem.topPositions[label].rectTop + tableItem.topPositions[label].height / 2 + tableItem.top;
 
         allTableEntries[paletteKey] = {
           key: paletteKey,
@@ -256,36 +212,55 @@
         };
       }
     });
+  })
 
-    return $group.outerHTML;
-    //tableItem
-  }).join('')}</g>
-  <g>
-    ${
-      connections.map(connection => {
-        const fromPoint = allTableEntries[connection.from.key];
-        const toPoint = allTableEntries[connection.to.key];
-        const $path = document.createElementNS(svgNamespace, 'path');
-        // M 5 10 c 5 -3 5 3 10 0
-        const path = `M ${fromPoint.x} ${fromPoint.y} c ${fromPoint.isLeft ? 20 : -20} 0 ${toPoint.isLeft ? 20 : -20} 3 ${toPoint.x - fromPoint.x} ${toPoint.y - fromPoint.y}`;
-        $path.setAttribute('d', `${path}`);
-        $path.setAttribute('stroke', fromPoint.color);
-        $path.setAttribute('stroke-width', '2');
-        $path.setAttribute('fill', 'none');
-        return $path.outerHTML;
-      }).join('')
+  const tableItems = `
+  <g class="connections-bg" stroke-width="3.5" fill="none">
+    ${connections.map(connection => {
+      const fromPoint = allTableEntries[connection.from.key];
+      const toPoint = allTableEntries[connection.to.key];
+      const $path = document.createElementNS(svgNamespace, 'path');
+      const yDiff = Math.abs(fromPoint.y - toPoint.y);
+      const amp = 40 + (yDiff * 0.3);
+      // path.setAttributeNS(null, 'd', `M ${left * 1000} ${top * 1000} C ${left * 1000 + (goToLeft ? amp : -amp)} ${top * 1000}, ${targetLeft * 1000 + (targetHoGoLeft ? amp : -amp)} ${targetTop * 1000}, ${targetLeft * 1000} ${targetTop * 1000}`);
+      const path = `M ${fromPoint.x} ${fromPoint.y} C ${fromPoint.x + (fromPoint.isLeft ? amp : -amp)} ${fromPoint.y}, ${toPoint.x + (toPoint.isLeft ? amp : -amp)} ${toPoint.y}, ${toPoint.x} ${toPoint.y}`;
+      $path.setAttribute('d', `${path}`);
+      $path.setAttribute('stroke', '#000');
+      return $path.outerHTML;
+    }).join('')
     }
+  </g>
+  <g class="connections" stroke-width="2" fill="none">
+    ${connections.map(connection => {
+      const fromPoint = allTableEntries[connection.from.key];
+      const toPoint = allTableEntries[connection.to.key];
+      const $path = document.createElementNS(svgNamespace, 'path');
+      const yDiff = Math.abs(fromPoint.y - toPoint.y);
+      const amp = 40 + (yDiff * 0.3);
+      // path.setAttributeNS(null, 'd', `M ${left * 1000} ${top * 1000} C ${left * 1000 + (goToLeft ? amp : -amp)} ${top * 1000}, ${targetLeft * 1000 + (targetHoGoLeft ? amp : -amp)} ${targetTop * 1000}, ${targetLeft * 1000} ${targetTop * 1000}`);
+      const path = `M ${fromPoint.x} ${fromPoint.y} C ${fromPoint.x + (fromPoint.isLeft ? amp : -amp)} ${fromPoint.y}, ${toPoint.x + (toPoint.isLeft ? amp : -amp)} ${toPoint.y}, ${toPoint.x} ${toPoint.y}`;
+      $path.setAttribute('d', `${path}`);
+      $path.setAttribute('stroke', fromPoint.color);
+      return $path.outerHTML;
+    }).join('')
+    }
+  </g>
+  <g class="tables">${table.tableItems.map((tableItem, i) => {
+    const $group = tableItem.$g;
+    $group.setAttribute('transform', `translate(${tableItem.left}, ${tableItem.top})`);
+    return $group.outerHTML;
+  }).join('')}</g>
+  <g class="dots">
     ${
       Object.keys(allTableEntries).map(key => {
         const entry = allTableEntries[key];
-        console.log(entry)
         const $circle = document.createElementNS(svgNamespace, 'circle');
         $circle.setAttribute('cx', entry.x);
         $circle.setAttribute('cy', entry.y);
-        $circle.setAttribute('r', 3);
+        $circle.setAttribute('r', 5);
         $circle.setAttribute('fill', entry.color);
         $circle.setAttribute('stroke', 'black');
-        $circle.setAttribute('stroke-width', '.25');
+        $circle.setAttribute('stroke-width', '1');
         return $circle.outerHTML;
       }).join('')
     }
@@ -297,7 +272,33 @@
   // draw connections between palettes
 
   document.body.innerHTML = createSVG(table.tableBoundingRect.w, table.tableBoundingRect.h,
-    `<circle cx="${table.tableBoundingRect.centerX}" cy="${table.tableBoundingRect.centerY}" r="${table.tableBoundingRect.r}" fill="none" stroke="black"/>`
+    `
+<style>
+  .palette-table {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .palette-table__row {
+    fill: none;
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .palette-table__label {
+    fill: black;
+  }
+
+  .palette-table__label--header {
+    font-weight: bold;
+    fill: white
+  }
+  .palette-table__row--header {
+    fill: black;
+  }
+</style>
+    <circle cx="${table.tableBoundingRect.centerX}" cy="${table.tableBoundingRect.centerY}" r="${table.tableBoundingRect.r}" fill="none" stroke="black"/>`
     + tableItems
   );
 
@@ -345,6 +346,7 @@
       topPositions[label] = {
         rectTop,
         textTop,
+        height: heightPerItem,
       }
       $rect.setAttribute('width', w);
       $rect.setAttribute('height', heightPerItem);
