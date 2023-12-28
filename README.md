@@ -129,6 +129,11 @@ document.querySelector('head').appendChild($style);
 ```bash
 node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes.json --mode css > colors.css
 ```
+### arguments
+
+- `colors`: path to JSON or JS returning raw colors as {name: key}
+- `palettes`: path to JSON or JS returning palettes as {key: reference}
+- `mode`: css, scss or html
 
 #### Export SVG Visualisation
 
@@ -137,12 +142,6 @@ node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes
 ```
 
 ![svg export](./connections.svg)
-
-### arguments
-
-- `colors`: path to JSON or JS returning raw colors as {name: key}
-- `palettes`: path to JSON or JS returning palettes as {key: reference}
-- `mode`: css, scss or html
 
 ### usage with javascript files as arguments
 
