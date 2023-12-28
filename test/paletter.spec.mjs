@@ -188,4 +188,103 @@ describe('Paletter', () => {
       expect(resultConnection).toEqual(expectedConnection);
     });
   });
+
+  describe('paletteKeys', () => {
+    it('should return an array of palette keys', () => {
+      const paletter = new Paletter(palettes, colors);
+      const keys = paletter.paletteKeys;
+
+      expect(Array.isArray(keys)).toBe(true);
+      expect(keys).toEqual(expect.arrayContaining(Object.keys(palettes)));
+    });
+  });
+
+  describe('getConnection', () => {
+    it('should return a list of connections from the given palette key', () => {
+      const testConnections = [
+        {from:
+          {key: 'test1__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test2__link',
+           ref: {color: 'link', palette: 'test'}}},
+        {from:
+          {key: 'test2__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test3__link',
+           ref: {color: 'link', palette: 'test'}}},
+        {from:
+          {key: 'test1__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test4__link',
+           ref: {color: 'link', palette: 'test'}}},
+      ];
+      const paletter = new Paletter(palettes, colors);
+      paletter.connections = testConnections;
+
+      const result = paletter.getConnection('test1__link');
+      const expected = [
+        {from:
+          {key: 'test1__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test2__link',
+           ref: {color: 'link', palette: 'test'}}},
+        {from:
+          {key: 'test1__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test4__link',
+           ref: {color: 'link', palette: 'test'}}},
+      ];
+
+      expect(result).toEqual(expected);
+    });
+
+    it(`should return an empty array if no connections are found for the
+    given palette key`, () => {
+      const testConnections = [
+        {from:
+          {key: 'test1__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test2__link',
+           ref: {color: 'link', palette: 'test'}}},
+        {from:
+          {key: 'test2__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test3__link',
+           ref: {color: 'link', palette: 'test'}}},
+        {from:
+          {key: 'test1__link',
+           ref: {color: 'link', palette: 'test'}}, to: {key: 'test4__link',
+           ref: {color: 'link', palette: 'test'}}},
+      ];
+      const paletter = new Paletter(palettes, colors);
+      paletter.connections = testConnections;
+
+      const result = paletter.getConnection('test5__link');
+      const expected = [];
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('parseKey', () => {
+    it('should return an object with the palette and color key', () => {
+      const testPaletteKey = 'test1__link';
+      const expected = {
+        palette: 'test1',
+        color: 'link',
+      };
+
+      const paletter = new Paletter(palettes, colors);
+      const result = paletter.parseKey(testPaletteKey);
+
+      expect(result).toEqual(expected);
+    });
+
+    it(`should return an object with the palette and default color
+    key if no color key is provided`, () => {
+      const testPaletteKey = 'test2';
+      const expected = {
+        palette: 'test2',
+        color: 'default',
+      };
+
+      const paletter = new Paletter(palettes, colors);
+      const result = paletter.parseKey(testPaletteKey);
+
+      expect(result).toEqual(expected);
+    });
+  });
 });
