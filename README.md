@@ -1,15 +1,18 @@
 # paletter 🎨
+
 simple JS class to manage color palettes by giving them semantic meaning
 and being aware of the connections between the colors in your palettes
 
 ## Installation 💾
-```
+
+```bash
 npm install paletter --save-dev
 ```
 
 ## Setup
 
-### Define an object containing all references for color values:
+### Define an object containing all references for color values
+
 ```javascript
 const colors = {
   blue: '#00fff1',
@@ -23,6 +26,7 @@ const colors = {
 ```
 
 ### Setup your palettes
+
 ```javascript
 const palettes = {
   brand: {
@@ -55,7 +59,7 @@ const palettes = {
 };
 ```
 
-## Usage:
+## Usage
 
 ```javascript
 const palette = new Paletter(palettes, colors);
@@ -68,9 +72,10 @@ palette.getParsed() // will return your full palette with hex values instead of 
 palette.getConnections() // returns an array of all links within palettes
 ```
 
+## Examples
 
-## Examples:
 Create CSS variables for each color:
+
 ```javascript
 function objToCSSVars (obj, links) {
   let CSSvars = ':root {\n';
@@ -95,6 +100,7 @@ document.querySelector('head').appendChild($style);
 ```
 
 ### Will result in something like
+
 ```css
 :root {
   --brand-logo: #00fff1;
@@ -117,18 +123,32 @@ document.querySelector('head').appendChild($style);
 ## CLI
 
 ### usage
+
+#### Export to CSS (including CSS variables)
+
 ```bash
 node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes.json --mode css > colors.css
 ```
+
+#### Export SVG Visualisation
+
+```bash
+node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes.json --mode svg > connections.svg
+```
+
+![svg export](./connections.svg)
+
 ### arguments
+
 - `colors`: path to JSON or JS returning raw colors as {name: key}
 - `palettes`: path to JSON or JS returning palettes as {key: reference}
 - `mode`: css, scss or html
 
 ### usage with javascript files as arguments
+
 You can use javascript files instead of JSON files, as long as you export a javascript object like this:
 
-```
+```javascript
 // colors.js
 module.exports = {
   blue: '#00fff1'
