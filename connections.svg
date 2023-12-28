@@ -1,0 +1,456 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1580.3418760337354 1851.5418760337354">
+  <style>
+  .palette-table {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+  }
+  .palette-table__row {
+    fill: none;
+    stroke: black;
+    stroke-width: 1;
+  }
+  text {
+    font-family: monospace;
+  }
+  .palette-table__label {
+    fill: black;
+  }
+  .palette-table__label--header {
+    font-weight: bold;
+    fill: white
+  }
+  .palette-table__row--header {
+    fill: black;
+  }
+  </style>
+  <!--circle cx="790.1709380168677" cy="925.7709380168677" r="571.4757816807231" fill="none" stroke="black"/-->
+  <g class="connections-bg" stroke-width="3.5" fill="none">
+    <path d="M 1206.7526743517058 1167.6409131049693 C 1113.1025919552123 1167.6409131049693, 1219.6748798825454 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="#000"></path>
+    <path d="M 1206.7526743517058 1192.6409131049693 C 1159.2526743517058 1192.6409131049693, 1159.2526743517058 1167.6409131049693, 1206.7526743517058 1167.6409131049693" stroke="#000"></path>
+    <path d="M 1206.7526743517058 1217.6409131049693 C 1120.6025919552123 1217.6409131049693, 1227.1748798825454 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="#000"></path>
+    <path d="M 1206.7526743517058 1242.6409131049693 C 986.4730805265162 1242.6409131049693, 569.0286373246852 641.7089336876708, 348.7490434994956 641.7089336876708" stroke="#000"></path>
+    <path d="M 1206.7526743517058 1267.6409131049693 C 1098.1025919552123 1267.6409131049693, 1204.6748798825454 1038.8073051166577, 1313.3249622790388 1038.8073051166577" stroke="#000"></path>
+    <path d="M 1206.7526743517058 1317.6409131049693 C 1136.7526743517058 1317.6409131049693, 1136.7526743517058 1217.6409131049693, 1206.7526743517058 1217.6409131049693" stroke="#000"></path>
+    <path d="M 1206.7526743517058 1342.6409131049693 C 839.659012209373 1342.6409131049693, 1045.8950134034847 252.32870596385987, 678.8013512611519 252.32870596385987" stroke="#000"></path>
+    <path d="M 904.9333782408223 1346.2938710788771 C 757.6874084521564 1346.2938710788771, 1166.078992490373 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="#000"></path>
+    <path d="M 904.9333782408223 1371.2938710788771 C 818.83749084865 1371.2938710788771, 1120.6567869595333 1217.6409131049693, 1206.7526743517058 1217.6409131049693" stroke="#000"></path>
+    <path d="M 904.9333782408223 1421.2938710788771 C 842.4333782408223 1421.2938710788771, 842.4333782408223 1346.2938710788771, 904.9333782408223 1346.2938710788771" stroke="#000"></path>
+    <path d="M 904.9333782408223 1471.2938710788771 C 788.83749084865 1471.2938710788771, 1090.6567869595333 1217.6409131049693, 1206.7526743517058 1217.6409131049693" stroke="#000"></path>
+    <path d="M 904.9333782408223 1496.2938710788771 C 849.9333782408223 1496.2938710788771, 849.9333782408223 1446.2938710788771, 904.9333782408223 1446.2938710788771" stroke="#000"></path>
+    <path d="M 904.9333782408223 1521.2938710788771 C 849.9333782408223 1521.2938710788771, 849.9333782408223 1471.2938710788771, 904.9333782408223 1471.2938710788771" stroke="#000"></path>
+    <path d="M 904.9333782408223 1546.2938710788771 C 804.9333782408223 1546.2938710788771, 804.9333782408223 1346.2938710788771, 904.9333782408223 1346.2938710788771" stroke="#000"></path>
+    <path d="M 904.9333782408223 1571.2938710788771 C 571.0578970234604 1571.2938710788771, 682.6245247168574 591.7089336876708, 348.7490434994956 591.7089336876708" stroke="#000"></path>
+    <path d="M 904.9333782408223 1596.2938710788771 C 578.5578970234604 1596.2938710788771, 675.1245247168574 641.7089336876708, 348.7490434994956 641.7089336876708" stroke="#000"></path>
+    <path d="M 904.9333782408223 1621.2938710788771 C 857.4333782408223 1621.2938710788771, 857.4333782408223 1596.2938710788771, 904.9333782408223 1596.2938710788771" stroke="#000"></path>
+    <path d="M 595.3190312474877 1301.8108549824021 C 706.720096207211 1301.8108549824021, 1201.9238973193155 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="#000"></path>
+    <path d="M 595.3190312474877 1326.8108549824021 C 736.7200962072111 1326.8108549824021, 1171.9238973193155 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="#000"></path>
+    <path d="M 595.3190312474877 1376.8108549824021 C 729.2200962072111 1376.8108549824021, 1179.4238973193155 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="#000"></path>
+    <path d="M 595.3190312474877 1426.8108549824021 C 665.3190312474877 1426.8108549824021, 665.3190312474877 1326.8108549824021, 595.3190312474877 1326.8108549824021" stroke="#000"></path>
+    <path d="M 595.3190312474877 1451.8108549824021 C 650.3190312474877 1451.8108549824021, 650.3190312474877 1401.8108549824021, 595.3190312474877 1401.8108549824021" stroke="#000"></path>
+    <path d="M 595.3190312474877 1476.8108549824021 C 650.3190312474877 1476.8108549824021, 650.3190312474877 1426.8108549824021, 595.3190312474877 1426.8108549824021" stroke="#000"></path>
+    <path d="M 595.3190312474877 1501.8108549824021 C 651.9741264185452 1501.8108549824021, 848.2782830697648 1446.2938710788771, 904.9333782408223 1446.2938710788771" stroke="#000"></path>
+    <path d="M 340.5493908281609 1180.8771558591757 C 508.9149443478703 1180.8771558591757, 1131.4361002727765 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="#000"></path>
+    <path d="M 340.5493908281609 1205.8771558591757 C 422.6744053940713 1205.8771558591757, 822.8083636749119 1346.2938710788771, 904.9333782408223 1346.2938710788771" stroke="#000"></path>
+    <path d="M 340.5493908281609 1230.8771558591757 C 445.1744053940713 1230.8771558591757, 800.3083636749119 1446.2938710788771, 904.9333782408223 1446.2938710788771" stroke="#000"></path>
+    <path d="M 340.5493908281609 1255.8771558591757 C 452.6744053940713 1255.8771558591757, 792.8083636749119 1496.2938710788771, 904.9333782408223 1496.2938710788771" stroke="#000"></path>
+    <path d="M 289.42086480207763 1040.942221693098 C 407.6814547888689 1040.942221693098, 713.579621234279 1301.8108549824021, 595.3190312474877 1301.8108549824021" stroke="#000"></path>
+    <path d="M 289.42086480207763 1065.942221693098 C 430.1814547888689 1065.942221693098, 736.079621234279 1401.8108549824021, 595.3190312474877 1401.8108549824021" stroke="#000"></path>
+    <path d="M 289.42086480207763 1090.942221693098 C 437.6814547888689 1090.942221693098, 743.579621234279 1451.8108549824021, 595.3190312474877 1451.8108549824021" stroke="#000"></path>
+    <path d="M 268.8221867193803 895.1783668208031 C 336.91086820813666 895.1783668208031, 1245.2362807902823 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="#000"></path>
+    <path d="M 268.8221867193803 920.1783668208031 C 316.3221867193803 920.1783668208031, 316.3221867193803 895.1783668208031, 268.8221867193803 895.1783668208031" stroke="#000"></path>
+    <path d="M 306.2561337342978 724.5482897512438 C 534.4349033036453 724.5482897512438, 823.4978008168353 1351.8108549824021, 595.3190312474877 1351.8108549824021" stroke="#000"></path>
+    <path d="M 678.8013512611519 427.3287059638599 C 887.2449310069912 427.3287059638599, 1104.8813825331995 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="#000"></path>
+    <path d="M 678.8013512611519 452.3287059638599 C 933.3950134034848 452.3287059638599, 952.1590122093729 1167.6409131049693, 1206.7526743517058 1167.6409131049693" stroke="#000"></path>
+    <path d="M 678.8013512611519 477.3287059638599 C 809.0003327100372 477.3287059638599, 1169.6026723436007 777.9919774601443, 1299.801653792486 777.9919774601443" stroke="#000"></path>
+    <path d="M 898.7183430825238 385.0843125802286 C 662.6014453215951 385.0843125802286, 1077.20806451811 1038.8073051166577, 1313.3249622790388 1038.8073051166577" stroke="#000"></path>
+    <path d="M 1127.7615030965685 451.9196664407905 C 997.4398097907624 451.9196664407905, 1169.4799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="#000"></path>
+    <path d="M 1127.7615030965685 476.9196664407905 C 989.9398097907624 476.9196664407905, 1161.9799604866798 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="#000"></path>
+    <path d="M 1127.7615030965685 501.9196664407905 C 1012.4398097907624 501.9196664407905, 1184.4799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="#000"></path>
+    <path d="M 1127.7615030965685 526.9196664407905 C 1004.9398097907624 526.9196664407905, 1176.9799604866798 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="#000"></path>
+    <path d="M 1127.7615030965685 551.9196664407905 C 1027.4398097907624 551.9196664407905, 1199.4799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="#000"></path>
+    <path d="M 1127.7615030965685 601.9196664407905 C 819.4492417051425 601.9196664407905, 596.6211168493963 1496.2938710788771, 904.9333782408223 1496.2938710788771" stroke="#000"></path>
+    <path d="M 1127.7615030965685 626.9196664407905 C 1049.9398097907624 626.9196664407905, 1221.9799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="#000"></path>
+    <path d="M 1127.7615030965685 651.9196664407905 C 1042.4398097907624 651.9196664407905, 1214.4799604866798 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="#000"></path>
+    <path d="M 1299.801653792486 752.9919774601443 C 1166.5570554955318 752.9919774601443, 1180.0803639820847 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="#000"></path>
+    <path d="M 1299.801653792486 802.9919774601443 C 1196.5570554955318 802.9919774601443, 1210.0803639820847 1013.8073051166577, 1313.3249622790388 1013.8073051166577" stroke="#000"></path>
+    <path d="M 1299.801653792486 827.9919774601443 C 1252.301653792486 827.9919774601443, 1252.301653792486 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="#000"></path>
+    <path d="M 1299.801653792486 852.9919774601443 C 1237.301653792486 852.9919774601443, 1237.301653792486 777.9919774601443, 1299.801653792486 777.9919774601443" stroke="#000"></path>
+  </g>
+  <g class="connections" stroke-width="2" fill="none">
+    <path d="M 1206.7526743517058 1167.6409131049693 C 1113.1025919552123 1167.6409131049693, 1219.6748798825454 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 1206.7526743517058 1192.6409131049693 C 1159.2526743517058 1192.6409131049693, 1159.2526743517058 1167.6409131049693, 1206.7526743517058 1167.6409131049693" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 1206.7526743517058 1217.6409131049693 C 1120.6025919552123 1217.6409131049693, 1227.1748798825454 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1206.7526743517058 1242.6409131049693 C 986.4730805265162 1242.6409131049693, 569.0286373246852 641.7089336876708, 348.7490434994956 641.7089336876708" stroke="rgb(168, 168, 168)"></path>
+    <path d="M 1206.7526743517058 1267.6409131049693 C 1098.1025919552123 1267.6409131049693, 1204.6748798825454 1038.8073051166577, 1313.3249622790388 1038.8073051166577" stroke="rgb(0, 190, 200)"></path>
+    <path d="M 1206.7526743517058 1317.6409131049693 C 1136.7526743517058 1317.6409131049693, 1136.7526743517058 1217.6409131049693, 1206.7526743517058 1217.6409131049693" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1206.7526743517058 1342.6409131049693 C 839.659012209373 1342.6409131049693, 1045.8950134034847 252.32870596385987, 678.8013512611519 252.32870596385987" stroke="rgb(190, 58, 55)"></path>
+    <path d="M 904.9333782408223 1346.2938710788771 C 757.6874084521564 1346.2938710788771, 1166.078992490373 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 904.9333782408223 1371.2938710788771 C 818.83749084865 1371.2938710788771, 1120.6567869595333 1217.6409131049693, 1206.7526743517058 1217.6409131049693" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 904.9333782408223 1421.2938710788771 C 842.4333782408223 1421.2938710788771, 842.4333782408223 1346.2938710788771, 904.9333782408223 1346.2938710788771" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 904.9333782408223 1471.2938710788771 C 788.83749084865 1471.2938710788771, 1090.6567869595333 1217.6409131049693, 1206.7526743517058 1217.6409131049693" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 904.9333782408223 1496.2938710788771 C 849.9333782408223 1496.2938710788771, 849.9333782408223 1446.2938710788771, 904.9333782408223 1446.2938710788771" stroke="rgb(0, 108, 255)"></path>
+    <path d="M 904.9333782408223 1521.2938710788771 C 849.9333782408223 1521.2938710788771, 849.9333782408223 1471.2938710788771, 904.9333782408223 1471.2938710788771" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 904.9333782408223 1546.2938710788771 C 804.9333782408223 1546.2938710788771, 804.9333782408223 1346.2938710788771, 904.9333782408223 1346.2938710788771" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 904.9333782408223 1571.2938710788771 C 571.0578970234604 1571.2938710788771, 682.6245247168574 591.7089336876708, 348.7490434994956 591.7089336876708" stroke="rgb(227, 227, 227)"></path>
+    <path d="M 904.9333782408223 1596.2938710788771 C 578.5578970234604 1596.2938710788771, 675.1245247168574 641.7089336876708, 348.7490434994956 641.7089336876708" stroke="rgb(168, 168, 168)"></path>
+    <path d="M 904.9333782408223 1621.2938710788771 C 857.4333782408223 1621.2938710788771, 857.4333782408223 1596.2938710788771, 904.9333782408223 1596.2938710788771" stroke="rgb(168, 168, 168)"></path>
+    <path d="M 595.3190312474877 1301.8108549824021 C 706.720096207211 1301.8108549824021, 1201.9238973193155 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 595.3190312474877 1326.8108549824021 C 736.7200962072111 1326.8108549824021, 1171.9238973193155 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 595.3190312474877 1376.8108549824021 C 729.2200962072111 1376.8108549824021, 1179.4238973193155 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 595.3190312474877 1426.8108549824021 C 665.3190312474877 1426.8108549824021, 665.3190312474877 1326.8108549824021, 595.3190312474877 1326.8108549824021" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 595.3190312474877 1451.8108549824021 C 650.3190312474877 1451.8108549824021, 650.3190312474877 1401.8108549824021, 595.3190312474877 1401.8108549824021" stroke="rgb(118, 217, 222)"></path>
+    <path d="M 595.3190312474877 1476.8108549824021 C 650.3190312474877 1476.8108549824021, 650.3190312474877 1426.8108549824021, 595.3190312474877 1426.8108549824021" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 595.3190312474877 1501.8108549824021 C 651.9741264185452 1501.8108549824021, 848.2782830697648 1446.2938710788771, 904.9333782408223 1446.2938710788771" stroke="rgb(0, 108, 255)"></path>
+    <path d="M 340.5493908281609 1180.8771558591757 C 508.9149443478703 1180.8771558591757, 1131.4361002727765 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 340.5493908281609 1205.8771558591757 C 422.6744053940713 1205.8771558591757, 822.8083636749119 1346.2938710788771, 904.9333782408223 1346.2938710788771" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 340.5493908281609 1230.8771558591757 C 445.1744053940713 1230.8771558591757, 800.3083636749119 1446.2938710788771, 904.9333782408223 1446.2938710788771" stroke="rgb(0, 108, 255)"></path>
+    <path d="M 340.5493908281609 1255.8771558591757 C 452.6744053940713 1255.8771558591757, 792.8083636749119 1496.2938710788771, 904.9333782408223 1496.2938710788771" stroke="rgb(0, 108, 255)"></path>
+    <path d="M 289.42086480207763 1040.942221693098 C 407.6814547888689 1040.942221693098, 713.579621234279 1301.8108549824021, 595.3190312474877 1301.8108549824021" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 289.42086480207763 1065.942221693098 C 430.1814547888689 1065.942221693098, 736.079621234279 1401.8108549824021, 595.3190312474877 1401.8108549824021" stroke="rgb(118, 217, 222)"></path>
+    <path d="M 289.42086480207763 1090.942221693098 C 437.6814547888689 1090.942221693098, 743.579621234279 1451.8108549824021, 595.3190312474877 1451.8108549824021" stroke="rgb(118, 217, 222)"></path>
+    <path d="M 268.8221867193803 895.1783668208031 C 336.91086820813666 895.1783668208031, 1245.2362807902823 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 268.8221867193803 920.1783668208031 C 316.3221867193803 920.1783668208031, 316.3221867193803 895.1783668208031, 268.8221867193803 895.1783668208031" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 306.2561337342978 724.5482897512438 C 534.4349033036453 724.5482897512438, 823.4978008168353 1351.8108549824021, 595.3190312474877 1351.8108549824021" stroke="rgb(49, 65, 180)"></path>
+    <path d="M 678.8013512611519 427.3287059638599 C 887.2449310069912 427.3287059638599, 1104.8813825331995 988.8073051166577, 1313.3249622790388 988.8073051166577" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 678.8013512611519 452.3287059638599 C 933.3950134034848 452.3287059638599, 952.1590122093729 1167.6409131049693, 1206.7526743517058 1167.6409131049693" stroke="rgb(0, 60, 180)"></path>
+    <path d="M 678.8013512611519 477.3287059638599 C 809.0003327100372 477.3287059638599, 1169.6026723436007 777.9919774601443, 1299.801653792486 777.9919774601443" stroke="rgb(239, 245, 255)"></path>
+    <path d="M 898.7183430825238 385.0843125802286 C 662.6014453215951 385.0843125802286, 1077.20806451811 1038.8073051166577, 1313.3249622790388 1038.8073051166577" stroke="rgb(0, 190, 200)"></path>
+    <path d="M 1127.7615030965685 451.9196664407905 C 997.4398097907624 451.9196664407905, 1169.4799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1127.7615030965685 476.9196664407905 C 989.9398097907624 476.9196664407905, 1161.9799604866798 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="rgb(0, 0, 120)"></path>
+    <path d="M 1127.7615030965685 501.9196664407905 C 1012.4398097907624 501.9196664407905, 1184.4799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1127.7615030965685 526.9196664407905 C 1004.9398097907624 526.9196664407905, 1176.9799604866798 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="rgb(0, 0, 120)"></path>
+    <path d="M 1127.7615030965685 551.9196664407905 C 1027.4398097907624 551.9196664407905, 1199.4799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1127.7615030965685 601.9196664407905 C 819.4492417051425 601.9196664407905, 596.6211168493963 1496.2938710788771, 904.9333782408223 1496.2938710788771" stroke="rgb(0, 108, 255)"></path>
+    <path d="M 1127.7615030965685 626.9196664407905 C 1049.9398097907624 626.9196664407905, 1221.9799604866798 752.9919774601443, 1299.801653792486 752.9919774601443" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1127.7615030965685 651.9196664407905 C 1042.4398097907624 651.9196664407905, 1214.4799604866798 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="rgb(0, 0, 120)"></path>
+    <path d="M 1299.801653792486 752.9919774601443 C 1166.5570554955318 752.9919774601443, 1180.0803639820847 1063.8073051166577, 1313.3249622790388 1063.8073051166577" stroke="rgb(255, 255, 255)"></path>
+    <path d="M 1299.801653792486 802.9919774601443 C 1196.5570554955318 802.9919774601443, 1210.0803639820847 1013.8073051166577, 1313.3249622790388 1013.8073051166577" stroke="rgb(0, 0, 120)"></path>
+    <path d="M 1299.801653792486 827.9919774601443 C 1252.301653792486 827.9919774601443, 1252.301653792486 802.9919774601443, 1299.801653792486 802.9919774601443" stroke="rgb(0, 0, 120)"></path>
+    <path d="M 1299.801653792486 852.9919774601443 C 1237.301653792486 852.9919774601443, 1237.301653792486 777.9919774601443, 1299.801653792486 777.9919774601443" stroke="rgb(239, 245, 255)"></path>
+  </g>
+  <g class="tables">
+    <g transform="translate(1313.3249622790388, 951.3073051166577)">
+      <rect class="palette-table" width="83" height="125"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="83" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">brand</text>
+      <rect class="palette-table__row" width="83" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">default</text>
+      <rect class="palette-table__row" width="83" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">shade</text>
+      <rect class="palette-table__row" width="83" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">highlight</text>
+      <rect class="palette-table__row" width="83" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">contrast</text>
+    </g>
+    <g transform="translate(1206.7526743517058, 1130.1409131049693)">
+      <rect class="palette-table" width="118" height="225"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="118" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">text</text>
+      <rect class="palette-table__row" width="118" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">default</text>
+      <rect class="palette-table__row" width="118" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">title</text>
+      <rect class="palette-table__row" width="118" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">inverted</text>
+      <rect class="palette-table__row" width="118" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">disabled</text>
+      <rect class="palette-table__row" width="118" height="25" y="125"></rect>
+      <text class="palette-table__label" x="10" y="141.5" font-size="10">highlight</text>
+      <rect class="palette-table__row" width="118" height="25" y="150"></rect>
+      <text class="palette-table__label" x="10" y="166.5" font-size="10">muted</text>
+      <rect class="palette-table__row" width="118" height="25" y="175"></rect>
+      <text class="palette-table__label" x="10" y="191.5" font-size="10">muted-inverted</text>
+      <rect class="palette-table__row" width="118" height="25" y="200"></rect>
+      <text class="palette-table__label" x="10" y="216.5" font-size="10">error</text>
+    </g>
+    <g transform="translate(904.9333782408223, 1308.7938710788771)">
+      <rect class="palette-table" width="111" height="325"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="111" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">interaction</text>
+      <rect class="palette-table__row" width="111" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">default</text>
+      <rect class="palette-table__row" width="111" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">on-default</text>
+      <rect class="palette-table__row" width="111" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">tonal</text>
+      <rect class="palette-table__row" width="111" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">on-tonal</text>
+      <rect class="palette-table__row" width="111" height="25" y="125"></rect>
+      <text class="palette-table__label" x="10" y="141.5" font-size="10">hover</text>
+      <rect class="palette-table__row" width="111" height="25" y="150"></rect>
+      <text class="palette-table__label" x="10" y="166.5" font-size="10">on-hover</text>
+      <rect class="palette-table__row" width="111" height="25" y="175"></rect>
+      <text class="palette-table__label" x="10" y="191.5" font-size="10">active</text>
+      <rect class="palette-table__row" width="111" height="25" y="200"></rect>
+      <text class="palette-table__label" x="10" y="216.5" font-size="10">on-active</text>
+      <rect class="palette-table__row" width="111" height="25" y="225"></rect>
+      <text class="palette-table__label" x="10" y="241.5" font-size="10">focus</text>
+      <rect class="palette-table__row" width="111" height="25" y="250"></rect>
+      <text class="palette-table__label" x="10" y="266.5" font-size="10">disabled</text>
+      <rect class="palette-table__row" width="111" height="25" y="275"></rect>
+      <text class="palette-table__label" x="10" y="291.5" font-size="10">on-disabled</text>
+      <rect class="palette-table__row" width="111" height="25" y="300"></rect>
+      <text class="palette-table__label" x="10" y="316.5" font-size="10">disabled-text</text>
+    </g>
+    <g transform="translate(435.3190312474877, 1264.3108549824021)">
+      <rect class="palette-table" width="160" height="325"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="160" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">interaction-inverted</text>
+      <rect class="palette-table__row" width="160" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">default</text>
+      <rect class="palette-table__row" width="160" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">on-default</text>
+      <rect class="palette-table__row" width="160" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">tonal</text>
+      <rect class="palette-table__row" width="160" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">on-tonal</text>
+      <rect class="palette-table__row" width="160" height="25" y="125"></rect>
+      <text class="palette-table__label" x="10" y="141.5" font-size="10">hover</text>
+      <rect class="palette-table__row" width="160" height="25" y="150"></rect>
+      <text class="palette-table__label" x="10" y="166.5" font-size="10">on-hover</text>
+      <rect class="palette-table__row" width="160" height="25" y="175"></rect>
+      <text class="palette-table__label" x="10" y="191.5" font-size="10">active</text>
+      <rect class="palette-table__row" width="160" height="25" y="200"></rect>
+      <text class="palette-table__label" x="10" y="216.5" font-size="10">on-active</text>
+      <rect class="palette-table__row" width="160" height="25" y="225"></rect>
+      <text class="palette-table__label" x="10" y="241.5" font-size="10">focus</text>
+      <rect class="palette-table__row" width="160" height="25" y="250"></rect>
+      <text class="palette-table__label" x="10" y="266.5" font-size="10">disabled</text>
+      <rect class="palette-table__row" width="160" height="25" y="275"></rect>
+      <text class="palette-table__label" x="10" y="291.5" font-size="10">on-disabled</text>
+      <rect class="palette-table__row" width="160" height="25" y="300"></rect>
+      <text class="palette-table__label" x="10" y="316.5" font-size="10">disabled-text</text>
+    </g>
+    <g transform="translate(243.54939082816088, 1143.3771558591757)">
+      <rect class="palette-table" width="97" height="125"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="97" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">input</text>
+      <rect class="palette-table__row" width="97" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">background</text>
+      <rect class="palette-table__row" width="97" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">line</text>
+      <rect class="palette-table__row" width="97" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">line-hover</text>
+      <rect class="palette-table__row" width="97" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">line-active</text>
+    </g>
+    <g transform="translate(171.42086480207763, 978.442221693098)">
+      <rect class="palette-table" width="118" height="125"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="118" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">input-inverted</text>
+      <rect class="palette-table__row" width="118" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">background</text>
+      <rect class="palette-table__row" width="118" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">line</text>
+      <rect class="palette-table__row" width="118" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">line-hover</text>
+      <rect class="palette-table__row" width="118" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">line-active</text>
+    </g>
+    <g transform="translate(171.82218671938028, 832.6783668208031)">
+      <rect class="palette-table" width="97" height="100"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="97" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">line</text>
+      <rect class="palette-table__row" width="97" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">layout</text>
+      <rect class="palette-table__row" width="97" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">data</text>
+      <rect class="palette-table__row" width="97" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">data-strong</text>
+    </g>
+    <g transform="translate(195.2561337342978, 687.0482897512438)">
+      <rect class="palette-table" width="111" height="100"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="111" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">line-inverted</text>
+      <rect class="palette-table__row" width="111" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">layout</text>
+      <rect class="palette-table__row" width="111" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">data</text>
+      <rect class="palette-table__row" width="111" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">data-strong</text>
+    </g>
+    <g transform="translate(286.7490434994956, 554.2089336876708)">
+      <rect class="palette-table" width="62" height="100"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="62" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">shade</text>
+      <rect class="palette-table__row" width="62" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">light</text>
+      <rect class="palette-table__row" width="62" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">medium</text>
+      <rect class="palette-table__row" width="62" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">dark</text>
+    </g>
+    <g transform="translate(504.8013512611519, 189.82870596385987)">
+      <rect class="palette-table" width="174" height="400"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="174" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">notification</text>
+      <rect class="palette-table__row" width="174" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">negative</text>
+      <rect class="palette-table__row" width="174" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">negative-text</text>
+      <rect class="palette-table__row" width="174" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">negative-text-inverted</text>
+      <rect class="palette-table__row" width="174" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">negative-background</text>
+      <rect class="palette-table__row" width="174" height="25" y="125"></rect>
+      <text class="palette-table__label" x="10" y="141.5" font-size="10">positive</text>
+      <rect class="palette-table__row" width="174" height="25" y="150"></rect>
+      <text class="palette-table__label" x="10" y="166.5" font-size="10">positive-text</text>
+      <rect class="palette-table__row" width="174" height="25" y="175"></rect>
+      <text class="palette-table__label" x="10" y="191.5" font-size="10">positive-text-inverted</text>
+      <rect class="palette-table__row" width="174" height="25" y="200"></rect>
+      <text class="palette-table__label" x="10" y="216.5" font-size="10">positive-background</text>
+      <rect class="palette-table__row" width="174" height="25" y="225"></rect>
+      <text class="palette-table__label" x="10" y="241.5" font-size="10">neutral</text>
+      <rect class="palette-table__row" width="174" height="25" y="250"></rect>
+      <text class="palette-table__label" x="10" y="266.5" font-size="10">neutral-text</text>
+      <rect class="palette-table__row" width="174" height="25" y="275"></rect>
+      <text class="palette-table__label" x="10" y="291.5" font-size="10">neutral-background</text>
+      <rect class="palette-table__row" width="174" height="25" y="300"></rect>
+      <text class="palette-table__label" x="10" y="316.5" font-size="10">warning</text>
+      <rect class="palette-table__row" width="174" height="25" y="325"></rect>
+      <text class="palette-table__label" x="10" y="341.5" font-size="10">warning-text</text>
+      <rect class="palette-table__row" width="174" height="25" y="350"></rect>
+      <text class="palette-table__label" x="10" y="366.5" font-size="10">warning-text-inverted</text>
+      <rect class="palette-table__row" width="174" height="25" y="375"></rect>
+      <text class="palette-table__label" x="10" y="391.5" font-size="10">warning-background</text>
+    </g>
+    <g transform="translate(898.7183430825238, 347.5843125802286)">
+      <rect class="palette-table" width="153" height="75"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="153" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">pikto</text>
+      <rect class="palette-table__row" width="153" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">decoration</text>
+      <rect class="palette-table__row" width="153" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">decoration-inverted</text>
+    </g>
+    <g transform="translate(1127.7615030965685, 414.4196664407905)">
+      <rect class="palette-table" width="167" height="250"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="167" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">layout</text>
+      <rect class="palette-table__row" width="167" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">background</text>
+      <rect class="palette-table__row" width="167" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">navigation</text>
+      <rect class="palette-table__row" width="167" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">header</text>
+      <rect class="palette-table__row" width="167" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">header-inverted</text>
+      <rect class="palette-table__row" width="167" height="25" y="125"></rect>
+      <text class="palette-table__label" x="10" y="141.5" font-size="10">footer</text>
+      <rect class="palette-table__row" width="167" height="25" y="150"></rect>
+      <text class="palette-table__label" x="10" y="166.5" font-size="10">modal-backdrop</text>
+      <rect class="palette-table__row" width="167" height="25" y="175"></rect>
+      <text class="palette-table__label" x="10" y="191.5" font-size="10">progress</text>
+      <rect class="palette-table__row" width="167" height="25" y="200"></rect>
+      <text class="palette-table__label" x="10" y="216.5" font-size="10">page-sidenav</text>
+      <rect class="palette-table__row" width="167" height="25" y="225"></rect>
+      <text class="palette-table__label" x="10" y="241.5" font-size="10">page-sidenav-inverted</text>
+    </g>
+    <g transform="translate(1299.801653792486, 715.4919774601443)">
+      <rect class="palette-table" width="97" height="175"></rect>
+      <rect class="palette-table__row palette-table__row--header" width="97" height="25" y="0"></rect>
+      <text class="palette-table__label palette-table__label--header" x="10" y="16.5" font-size="10">context</text>
+      <rect class="palette-table__row" width="97" height="25" y="25"></rect>
+      <text class="palette-table__label" x="10" y="41.5" font-size="10">normal</text>
+      <rect class="palette-table__row" width="97" height="25" y="50"></rect>
+      <text class="palette-table__label" x="10" y="66.5" font-size="10">weak</text>
+      <rect class="palette-table__row" width="97" height="25" y="75"></rect>
+      <text class="palette-table__label" x="10" y="91.5" font-size="10">strong</text>
+      <rect class="palette-table__row" width="97" height="25" y="100"></rect>
+      <text class="palette-table__label" x="10" y="116.5" font-size="10">strong-alt</text>
+      <rect class="palette-table__row" width="97" height="25" y="125"></rect>
+      <text class="palette-table__label" x="10" y="141.5" font-size="10">interactive</text>
+      <rect class="palette-table__row" width="97" height="25" y="150"></rect>
+      <text class="palette-table__label" x="10" y="166.5" font-size="10">none</text>
+    </g>
+  </g>
+  <g class="dots">
+    <circle cx="1313.3249622790388" cy="988.8073051166577" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1313.3249622790388" cy="1013.8073051166577" r="5" fill="rgb(0, 0, 120)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1313.3249622790388" cy="1038.8073051166577" r="5" fill="rgb(0, 190, 200)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1313.3249622790388" cy="1063.8073051166577" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1167.6409131049693" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1192.6409131049693" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1217.6409131049693" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1242.6409131049693" r="5" fill="rgb(168, 168, 168)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1267.6409131049693" r="5" fill="rgb(0, 190, 200)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1292.6409131049693" r="5" fill="rgb(101, 134, 205)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1317.6409131049693" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1206.7526743517058" cy="1342.6409131049693" r="5" fill="rgb(190, 58, 55)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1346.2938710788771" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1371.2938710788771" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1396.2938710788771" r="5" fill="rgb(211, 227, 253)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1421.2938710788771" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1446.2938710788771" r="5" fill="rgb(0, 108, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1471.2938710788771" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1496.2938710788771" r="5" fill="rgb(0, 108, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1521.2938710788771" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1546.2938710788771" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1571.2938710788771" r="5" fill="rgb(227, 227, 227)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1596.2938710788771" r="5" fill="rgb(168, 168, 168)" stroke="black" stroke-width="1"></circle>
+    <circle cx="904.9333782408223" cy="1621.2938710788771" r="5" fill="rgb(168, 168, 168)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1301.8108549824021" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1326.8108549824021" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1351.8108549824021" r="5" fill="rgb(49, 65, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1376.8108549824021" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1401.8108549824021" r="5" fill="rgb(118, 217, 222)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1426.8108549824021" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1451.8108549824021" r="5" fill="rgb(118, 217, 222)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1476.8108549824021" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1501.8108549824021" r="5" fill="rgb(0, 108, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1526.8108549824021" r="5" fill="rgba(255, 255, 255, .3)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1551.8108549824021" r="5" fill="rgba(255, 255, 255, .3)" stroke="black" stroke-width="1"></circle>
+    <circle cx="595.3190312474877" cy="1576.8108549824021" r="5" fill="rgba(255, 255, 255, .6)" stroke="black" stroke-width="1"></circle>
+    <circle cx="340.5493908281609" cy="1180.8771558591757" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="340.5493908281609" cy="1205.8771558591757" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="340.5493908281609" cy="1230.8771558591757" r="5" fill="rgb(0, 108, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="340.5493908281609" cy="1255.8771558591757" r="5" fill="rgb(0, 108, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="289.42086480207763" cy="1015.942221693098" r="5" fill="rgba(255, 255, 255, 0)" stroke="black" stroke-width="1"></circle>
+    <circle cx="289.42086480207763" cy="1040.942221693098" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="289.42086480207763" cy="1065.942221693098" r="5" fill="rgb(118, 217, 222)" stroke="black" stroke-width="1"></circle>
+    <circle cx="289.42086480207763" cy="1090.942221693098" r="5" fill="rgb(118, 217, 222)" stroke="black" stroke-width="1"></circle>
+    <circle cx="268.8221867193803" cy="870.1783668208031" r="5" fill="rgb(187, 209, 247)" stroke="black" stroke-width="1"></circle>
+    <circle cx="268.8221867193803" cy="895.1783668208031" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="268.8221867193803" cy="920.1783668208031" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="306.2561337342978" cy="724.5482897512438" r="5" fill="rgb(49, 65, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="306.2561337342978" cy="749.5482897512438" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="306.2561337342978" cy="774.5482897512438" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="348.7490434994956" cy="591.7089336876708" r="5" fill="rgb(227, 227, 227)" stroke="black" stroke-width="1"></circle>
+    <circle cx="348.7490434994956" cy="616.7089336876708" r="5" fill="rgb(199, 199, 199)" stroke="black" stroke-width="1"></circle>
+    <circle cx="348.7490434994956" cy="641.7089336876708" r="5" fill="rgb(168, 168, 168)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="227.32870596385987" r="5" fill="rgb(245, 129, 132)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="252.32870596385987" r="5" fill="rgb(190, 58, 55)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="277.3287059638599" r="5" fill="rgb(254, 174, 177)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="302.3287059638599" r="5" fill="rgb(255, 240, 241)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="327.3287059638599" r="5" fill="rgb(91, 194, 127)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="352.3287059638599" r="5" fill="rgb(28, 133, 76)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="377.3287059638599" r="5" fill="rgb(150, 219, 169)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="402.3287059638599" r="5" fill="rgb(236, 249, 225)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="427.3287059638599" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="452.3287059638599" r="5" fill="rgb(0, 60, 180)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="477.3287059638599" r="5" fill="rgb(239, 245, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="502.3287059638599" r="5" fill="rgb(236, 144, 28)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="527.3287059638599" r="5" fill="rgb(170, 85, 0)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="552.3287059638599" r="5" fill="rgb(236, 144, 28)" stroke="black" stroke-width="1"></circle>
+    <circle cx="678.8013512611519" cy="577.3287059638599" r="5" fill="rgb(255, 244, 220)" stroke="black" stroke-width="1"></circle>
+    <circle cx="898.7183430825238" cy="385.0843125802286" r="5" fill="rgb(0, 190, 200)" stroke="black" stroke-width="1"></circle>
+    <circle cx="898.7183430825238" cy="410.0843125802286" r="5" fill="rgb(118, 217, 222)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="451.9196664407905" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="476.9196664407905" r="5" fill="rgb(0, 0, 120)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="501.9196664407905" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="526.9196664407905" r="5" fill="rgb(0, 0, 120)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="551.9196664407905" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="576.9196664407905" r="5" fill="rgba(0, 0, 66, 0.6)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="601.9196664407905" r="5" fill="rgb(0, 108, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="626.9196664407905" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1127.7615030965685" cy="651.9196664407905" r="5" fill="rgb(0, 0, 120)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1299.801653792486" cy="752.9919774601443" r="5" fill="rgb(255, 255, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1299.801653792486" cy="777.9919774601443" r="5" fill="rgb(239, 245, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1299.801653792486" cy="802.9919774601443" r="5" fill="rgb(0, 0, 120)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1299.801653792486" cy="827.9919774601443" r="5" fill="rgb(0, 0, 120)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1299.801653792486" cy="852.9919774601443" r="5" fill="rgb(239, 245, 255)" stroke="black" stroke-width="1"></circle>
+    <circle cx="1299.801653792486" cy="877.9919774601443" r="5" fill="rgba(255, 255, 255, 0)" stroke="black" stroke-width="1"></circle>
+  </g>
+</svg>
