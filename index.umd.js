@@ -4476,13 +4476,13 @@
 	    if (Object.prototype.hasOwnProperty.call(this.palette, palette)) {
 	      paletteRef = this.palette[palette];
 	    } else {
-	      throw Error(`no palette called "${palette}"`);
+	      throw new Error(`no palette called "${palette}"`);
 	    }
 
 	    if (Object.prototype.hasOwnProperty.call(paletteRef, key)) {
 	      return paletteRef[key];
 	    } else {
-	      throw Error(`no color called "${key}" in "${palette}"`);
+	      throw new Error(`no color called "${key}" in "${palette}"`);
 	    }
 	  }
 
@@ -4495,7 +4495,8 @@
 	   */
 	  getColor(paletteKey, callStack = []) {
 	    if (callStack.indexOf(paletteKey) > -1) {
-	      throw new Error('you have infinite recursion in your palette');
+	      throw new Error(`you have infinite recursion in your palette ${
+        callStack.join(' -> ')}`);
 	    }
 
 	    const parsedKey = this.parseKey(paletteKey);

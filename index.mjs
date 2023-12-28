@@ -173,7 +173,8 @@ export default class Paletter {
    */
   getColor(paletteKey, callStack = []) {
     if (callStack.indexOf(paletteKey) > -1) {
-      throw new Error('you have infinite recursion in your palette');
+      throw new Error(`you have infinite recursion in your palette ${
+        callStack.join(' -> ')}`);
     }
 
     const parsedKey = this.parseKey(paletteKey);
