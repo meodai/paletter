@@ -4,6 +4,7 @@ import * as path from 'path';
 import {toCSS} from './lib/toCSS.mjs';
 import {toSCSSvars} from './lib/toSCSSvars.mjs';
 import {toHTML} from './lib/toHTML.mjs';
+import {toSVGviz} from './lib/toSVGviz.mjs';
 
 import Paletter from './index.mjs';
 
@@ -31,6 +32,9 @@ const modes = {
     );
   },
   html: ({parsedPalette, connections, palette, palettes} = {}) => toHTML(
+    {obj: parsedPalette, connections, palette, palettes}
+  ),
+  svg: ({parsedPalette, connections, palette, palettes} = {}) => toSVGviz(
     {obj: parsedPalette, connections, palette, palettes}
   ),
 };
