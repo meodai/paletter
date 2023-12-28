@@ -135,10 +135,9 @@ describe('Paletter', () => {
         test1: {link: 'test3__link'},
         test2: {link: 'test1__link'},
       };
-      const paletter = new Paletter(testPalette, colors);
 
       expect(() => {
-        paletter.getColor('test3__link', []);
+        new Paletter(testPalette, colors);
       }).toThrowError('no palette called "test3"');
     });
 
@@ -162,7 +161,8 @@ describe('Paletter', () => {
 
     it('should throw an error when palette key not exists', () => {
       const testPalette = {
-        test1: {link: 'test3__link'},
+        ja: {link: 'test1__link'},
+        test1: {link: 'red'},
         test2: {link: 'test1__link'},
       };
       const paletter = new Paletter(testPalette, colors);
