@@ -72,6 +72,80 @@ palette.getParsed() // will return your full palette with hex values instead of 
 palette.getConnections() // returns an array of all links within palettes
 ```
 
+## Paletter Methods
+
+### getParsed()
+
+Returns the full palette with hex values instead of links to other items.
+
+```javascript
+const parsedPalette = palette.getParsed();
+/*
+  {
+    brand: {
+      logo: '#00fff1',
+      main: '#010101',
+      highlight: '#42ff3f'
+    }, …
+  }
+*/
+```
+
+### getColor(paletteKey, callStack = [])
+
+getColor is a recursive function that returns the color value for a given palette key. It will follow links to other palettes and return the final color value. The
+`callStack` argument is used internally to prevent infinite loops.
+
+```javascript
+const color = paletter.getColor('main__primary'); // returns { value: '#0000FF', name: 'blue' }
+```
+
+### getConnections()
+
+Returns an array of all links within palettes.
+
+```javascript
+const connections = palette.getConnections();
+/*
+  [
+    {
+      from: { palette: 'typography', key: 'default' },
+      to: { palette: 'brand', key: 'main' }
+    }, …
+  ]
+*/
+```
+
+### getConnection(paletteKey)
+
+Returns the connection for a given palette key.
+
+```javascript
+const connection = palette.getConnection('typography__default');
+/*
+  {
+    from: { palette: 'typography', key: 'default' },
+    to: { palette: 'brand', key: 'main' }
+  }
+*/
+```
+
+### getPaletteKey(palette, key)
+
+Returns the palette key for a given palette and key.
+
+```javascript
+const paletteKey = paletter.getPaletteKey('main', 'primary'); // returns 'main__primary'
+```
+
+### static isValidColor(value)
+
+Checks if a color value is valid. Returns a boolean. This is used internally to check if a color is valid.
+
+```javascript
+const isValid = Paletter.isValidColor('#0000ff'); // returns true
+```
+
 ## Examples
 
 Create CSS variables for each color:
@@ -129,6 +203,7 @@ document.querySelector('head').appendChild($style);
 ```bash
 node ./node_modules/.bin/paletterTo --colors ./colors.json --palettes ./palettes.json --mode css > colors.css
 ```
+
 ### arguments
 
 - `colors`: path to JSON or JS returning raw colors as {name: key}
