@@ -1,9 +1,153 @@
 /* eslint-disable guard-for-in */
-import { parse } from 'culori';
+import { parse, converter, wcagContrast, differenceCiede2000 } from 'culori';
+
+const toHsl = converter('hsl');
+const toOKLCH = converter('oklch');
+
+/**
+ * Rules to choose a color from a list of colors
+ */
+const rules = {
+  'best-contrast': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const contrast = wcagContrast(referenceColor, curr);
+      if (contrast > prev.contrast) {
+        return {
+          contrast,
+          color: curr,
+        };
+      }
+      return prev;
+    }, {contrast: 0, color: null}).color;
+  },
+  'worst-contrast': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const contrast = wcagContrast(referenceColor, curr);
+      if (contrast < prev.contrast) {
+        return {
+          contrast,
+          color: curr,
+        };
+      }
+      return prev;
+    }, {contrast: Infinity, color: null}).color;
+  },
+  'random': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom[
+      Math.floor(Math.random() * colorsToChooseFrom.length)
+    ];
+  },
+  'closest': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const distance = differenceCiede2000(referenceColor, curr);
+      if (distance < prev.distance) {
+        return {
+          distance,
+          color: curr,
+        };
+      }
+      return prev;
+    }, {distance: Infinity, color: null}).color;
+  },
+  'furthest': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const distance = differenceCiede2000(referenceColor, curr);
+      if (distance > prev.distance) {
+        return {
+          distance,
+          color: curr,
+        };
+      }
+      return prev;
+    }, {distance: 0, color: null}).color;
+  },
+  'lightest': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const prevHsl = toOKLCH(prev);
+      const currHsl = toOKLCH(curr);
+      if (currHsl.l > prevHsl.l) {
+        return curr;
+      }
+      return prev;
+    });
+  },
+  'darkest': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const prevHsl = toOKLCH(prev);
+      const currHsl = toOKLCH(curr);
+      if (currHsl.l < prevHsl.l) {
+        return curr;
+      }
+      return prev;
+    });
+  },
+  'dullest': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const prevHsl = toOKLCH(prev);
+      const currHsl = toOKLCH(curr);
+      if (currHsl.c < prevHsl.c) {
+        return curr;
+      }
+      return prev;
+    });
+  },
+  'most-vivid': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const prevHsl = toOKLCH(prev);
+      const currHsl = toOKLCH(curr);
+      if (currHsl.c > prevHsl.c) {
+        return curr;
+      }
+      return prev;
+    });
+  },
+  'most-complementary': (referenceColor, colorsToChooseFrom) => {
+    return colorsToChooseFrom.reduce((prev, curr) => {
+      const prevHsl = toHsl(prev);
+      const currHsl = toHsl(curr);
+      if (Math.abs(currHsl.h - prevHsl.h) > 180) {
+        return curr;
+      }
+      return prev;
+    });
+  },
+};
+
+/**
+ * Modifiers to change a color value
+ */
+const mods = {
+  'lighten': (color, amount) => {
+    const hsl = toOKLCH(color);
+    hsl.l += amount;
+    return hsl;
+  },
+  'darken': (color, amount) => {
+    const hsl = toOKLCH(color);
+    hsl.l -= amount;
+    return hsl;
+  },
+  'saturate': (color, amount) => {
+    const hsl = toOKLCH(color);
+    hsl.c += amount;
+    return hsl;
+  },
+  'desaturate': (color, amount) => {
+    const hsl = toOKLCH(color);
+    hsl.c -= amount;
+    return hsl;
+  },
+  'rotate': (color, amount) => {
+    const hsl = toHsl(color);
+    hsl.h += amount;
+    return hsl;
+  },
+};
+
 
 /** Main paletter class */
 export default class Paletter {
-  // palettename--name
+  // palettename
   /**
    * Creates an instance of Paletter.
    * @param {Object} paletteObj colors palettes
@@ -14,12 +158,13 @@ export default class Paletter {
     this.defaults = {
       separator: '__',
       modifier: '--',
-      defaultColorKey: 'default',
+      ruleSymbol: '@',
       validateColors: true,
     };
     this.options = Object.assign({}, this.defaults, options);
     this.colors = Object.assign({}, colors);
     this.palette = Object.assign({}, paletteObj);
+    this.rules = new Map();
 
     if (this.options.validateColors) {
       this._validateColors();
@@ -113,11 +258,38 @@ export default class Paletter {
    *                  color key
    */
   parseKey(paletteKey) {
-    const parts = paletteKey.split(this.options.separator);
+    let ruleName = null;
+    let palette = null;
+    let color = null;
+    let parts = [];
+
+    if (paletteKey.indexOf(this.options.ruleSymbol) !== -1) {
+      parts = paletteKey.split(this.options.ruleSymbol);
+      palette = parts[0];
+      ruleName = parts[1];
+    } else if (paletteKey.indexOf(this.options.separator) !== -1) {
+      parts = paletteKey.split(this.options.separator);
+      palette = parts[0];
+      color = parts[1];
+    }
+
+    if (ruleName) {
+      if (!this.rules.has(ruleName)) {
+        throw new Error(`Invalid rule name "${ruleName}", make sure you
+        register the rule with the registerRule method`);
+      }
+    }
+
+    if (!palette || !color) {
+      throw new Error(`Invalid palette key "${paletteKey}", make sure you
+      to use palettename${this.options.separator}colorname or palettename${
+        this.options.ruleSymbol}rulename`);
+    }
+
     return {
-      palette: parts[0],
-      color: parts[0].length > 1 && parts[1] ?
-             parts[1] : this.options.defaultColorKey,
+      palette,
+      color,
+      rule: ruleName,
     };
   }
 
@@ -236,5 +408,9 @@ export default class Paletter {
     return this.connections.filter((connection) =>
       connection.from.key === paletteKey
     );
+  }
+
+  registerRule(ruleName, ruleFunction) {
+    this.rules.set(ruleName, ruleFunction);
   }
 }
