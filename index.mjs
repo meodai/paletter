@@ -1,5 +1,7 @@
 /* eslint-disable guard-for-in */
-import { parse, converter, wcagContrast, differenceCiede2000 } from 'culori';
+import {
+  parse, converter, wcagContrast, differenceCiede2000
+} from 'culori';
 
 const toHsl = converter('hsl');
 const toOKLCH = converter('oklch');
@@ -410,6 +412,10 @@ export default class Paletter {
     );
   }
 
+  /*
+    * @param {String} paletteKey typically contains a palette__key string
+    * @return {Array} List of all connections to the given palette
+    */
   registerRule(ruleName, ruleFunction) {
     this.rules.set(ruleName, ruleFunction);
   }
