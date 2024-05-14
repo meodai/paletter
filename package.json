@@ -6,6 +6,7 @@
   "es2015": "index.js",
   "type": "module",
   "module": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "npm run test:jest && npm run test:cli",
     "test:jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
