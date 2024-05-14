@@ -7,6 +7,40 @@
   "type": "module",
   "module": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.umd.js",
+    "index.d.ts",
+    "generate.mjs",
+    "colors.json",
+    "palettes.json",
+    "lib/toCSS.mjs",
+    "lib/toCSS.d.ts",
+    "lib/toSVGviz.mjs",
+    "lib/toSCSSvars.mjs",
+    "lib/toHTML.mjs",
+    "lib/tableView.mjs",
+    "lib/color-helper-fn.scss",
+    "lib/htmlExportCSS.css",
+    "lib/parse-palettes.scss"
+  ],
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.umd.js",
+      "types": "./index.d.ts"
+    },
+    "./lib/*.mjs": "./lib/*.mjs",
+    "./lib/toCSS": {
+        "import": "./lib/toCSS.mjs",
+        "require": "./lib/toCSS.mjs",
+        "types": "./lib/toCSS.d.ts"
+    },
+    "./lib/*.scss": "./lib/*.scss",
+    "./lib/*.css": "./lib/*.css",
+    "./colors.json": "./colors.json",
+    "./palettes.json": "./palettes.json"
+  },
   "scripts": {
     "test": "npm run test:jest && npm run test:cli",
     "test:jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
