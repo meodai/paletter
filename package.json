@@ -1,6 +1,6 @@
 {
   "name": "paletter",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "simple JS class to manage color palettes",
   "main": "index.umd.js",
   "es2015": "index.js",
@@ -32,9 +32,9 @@
     },
     "./lib/*.mjs": "./lib/*.mjs",
     "./lib/toCSS": {
-        "import": "./lib/toCSS.mjs",
-        "require": "./lib/toCSS.mjs",
-        "types": "./lib/toCSS.d.ts"
+      "import": "./lib/toCSS.mjs",
+      "require": "./lib/toCSS.mjs",
+      "types": "./lib/toCSS.d.ts"
     },
     "./lib/*.scss": "./lib/*.scss",
     "./lib/*.css": "./lib/*.css",
