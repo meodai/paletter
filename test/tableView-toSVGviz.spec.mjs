@@ -55,6 +55,34 @@ describe('tableView', () => {
     expect(result.tableItems).toHaveLength(0);
     expect(result.tableBoundingRect).toBeDefined();
   });
+
+  it('should handle a larger number of items', () => {
+    const numItems = 10;
+    const testSizes = [];
+    for (let i = 0; i < numItems; i++) {
+      testSizes.push({w: 50 + i * 5, h: 30 + i * 3});
+    }
+
+    const result = tableView(testSizes);
+
+    expect(result).toBeDefined();
+    expect(result.tableItems).toBeDefined();
+    expect(result.tableBoundingRect).toBeDefined();
+    expect(result.tableItems).toHaveLength(numItems);
+
+    result.tableItems.forEach((item) => {
+      expect(item).toHaveProperty('w');
+      expect(item).toHaveProperty('h');
+      expect(item).toHaveProperty('top');
+      expect(item).toHaveProperty('left');
+      expect(item).toHaveProperty('cx');
+      expect(item).toHaveProperty('cy');
+      expect(item).toHaveProperty('angle');
+    });
+
+    expect(result.tableBoundingRect.w).toBeGreaterThan(0);
+    expect(result.tableBoundingRect.h).toBeGreaterThan(0);
+  });
 });
 
 describe('toSVGviz', () => {

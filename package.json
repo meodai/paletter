@@ -3,13 +3,14 @@
   "version": "0.21.0",
   "description": "simple JS class to manage color palettes",
   "type": "module",
-  "main": "index.umd.js",
+  "main": "index.cjs",
   "module": "index.mjs",
   "types": "index.d.ts",
   "files": [
     "index.mjs",
     "index.js",
-    "index.umd.js",
+    "index.cjs",
+    "index.umd.cjs",
     "index.d.ts",
     "generate.mjs",
     "colors.json",
@@ -27,7 +28,7 @@
   "exports": {
     ".": {
       "import": "./index.mjs",
-      "require": "./index.umd.js",
+      "require": "./index.cjs",
       "types": "./index.d.ts"
     },
     "./lib/*.mjs": "./lib/*.mjs",
