@@ -57,10 +57,13 @@ const palettes = {
   interaction: {
     default: 'brand__highlight',
     link: 'brand__logo',
-    button: 'brand__highlight'
+    button: 'brand__highlight',
+    border: 'darkGrey'
   },
+  // Modifier palette: extends 'interaction' and overrides 'default', adds 'border'
   'interaction--inverted': {
-    default: 'white',
+    default: 'white', // overrides 'default' from 'interaction'
+    border: 'blue'    // overrides 'border' from 'interaction'
   },
   layout: {
     lines: 'darkGrey'
@@ -135,6 +138,49 @@ Checks if a color value is valid.
 ```js
 const isValid = Paletter.isValidColor('#0000ff'); // true
 ```
+
+---
+
+## Modifiers (`--` Notation)
+
+Paletter supports **modifiers** for palettes using the `--` notation. A modifier palette (e.g., `interaction--inverted`) extends the base palette (`interaction`) and can override or add keys. This is especially useful for creating variations such as **dark mode**, **themed sections**, or **context-specific overrides**—without duplicating the entire palette.
+
+- **How it works:**
+  - The modifier palette inherits all keys from the base palette.
+  - Any keys defined in the modifier will override those from the base palette.
+  - Additional keys can be added in the modifier.
+
+**Typical use cases:**
+
+- Implementing dark mode or light mode themes
+- Overriding palette values for a specific section or component
+- Creating alternate color schemes for special content
+
+**Example:**
+
+```js
+const palettes = {
+  interaction: {
+    default: 'brand__highlight',
+    link: 'brand__logo',
+    button: 'brand__highlight',
+    border: 'darkGrey'
+  },
+  // Modifier for dark mode or a special theme
+  'interaction--inverted': {
+    default: 'white', // overrides 'default' from 'interaction'
+    border: 'blue'    // overrides 'border' from 'interaction'
+  }
+};
+
+const palette = new Paletter(palettes, colors);
+console.log(palette.getParsed().interaction);
+// { default: '#42ff3f', link: '#00fff1', button: '#42ff3f', border: '#212121' }
+console.log(palette.getParsed()['interaction--inverted']);
+// { default: '#ffffff', link: '#00fff1', button: '#42ff3f', border: '#00fff1' }
+```
+
+In this example, `interaction--inverted` could be used for dark mode or a themed section. It inherits all keys from `interaction`, but `default` and `border` are overridden for the inverted context.
 
 ---
 
